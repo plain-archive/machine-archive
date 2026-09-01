@@ -48,4 +48,4 @@
 - **글이 안 써져요** — 로그인이 되어 있는지 확인하세요. 오른쪽 위에 계정 아이콘이 보이면 로그인된 상태입니다.
 - **어디에 써야 할지 모르겠어요** — 고민되면 자유게시판에 쓰시면 됩니다.
 - **파일이 잔뜩 보여요** — 첫 화면 위쪽의 폴더·파일 목록은 문서에 들어가는 이미지 자료입니다. 신경 쓰지 않으셔도 되고, 그 아래로 내리면 본문이 나옵니다.
-- **길을 잃었어요** — <img width="353" height="35" alt="image" src="https://github.com/user-attachments/assets/efa3193a-7050-4bed-bd65-a0e7cf5505fe" /> 화면 가장 상단의 **machine-archive**을 누르시면 다시 첫 화면으로 돌아갑니다.
+- **길을 잃었어요** — <img width="268" height="42" alt="image" src="https://github.com/user-attachments/assets/06ec4c03-968f-475b-b284-4b386a03f43d" /> 화면 가장 상단의 **machine-archive**을 누르시면 다시 첫 화면으로 돌아갑니다.
