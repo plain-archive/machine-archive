@@ -484,10 +484,13 @@
 
 지속적인 신고와 크랙의 비협조적인 행위로 소통 창구들이 계속 닫히는 상황이 발생합니다. 만약 깃허브 페이지까지 차단이 될 시에 다음 대피 공간인 오픈채팅으로 모여주세요.
 
-(1) 오픈채팅 https://open.kakao.com/o/gaiEFDLi
-※ 오픈채팅은 카카오 프로필으로 참여해주세요.
+(1) **오픈채팅 
+https://open.kakao.com/o/gaiEFDLi**
 
-(2) 패들렛 https://padlet.com/abcde1212/padlet-ktsx78wxp7gomza9
+**※ 오픈채팅은 카카오 프로필으로 참여해주세요.**
+
+(2) **패들렛** https://padlet.com/abcde1212/padlet-ktsx78wxp7gomza9
+
 ※ 현재는 읽기만 가능합니다.
 
 # 7. 마지막으로
