@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<!-- 모바일 대응: 안전영역(노치) 포함 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>크랙 제작자 '기계' 공론화</title>
+<meta name="description" content="AI 채팅 플랫폼 '크랙' 크리에이터 '기계' 관련 사실관계 확인 및 공개 해명 요청 문서입니다.">
+
+<!-- 검색엔진 노출 제어: 검색에 안 뜨게 하려면 아래 줄의 주석을 풀어주세요.
+<meta name="robots" content="noindex, nofollow">
+-->
+
+<!-- 폰트: Pretendard (교체하려면 이 줄과 아래 --font 변수만 바꾸면 됩니다) -->
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+/* ============================================================
+   색상 · 폰트 · 간격 : 여기 값만 바꾸면 전체가 바뀝니다
+   ============================================================ */
+:root{
+  /* 색상 */
+  --bg:        #f7f7f6;   /* 배경 */
+  --text:      #1a1a1a;   /* 글씨 */
+  --accent:    #9b2929;   /* 강조(붉은색) */
+  --line:      #afafaf;   /* 선 */
+  --link:      #0969da;   /* 링크(깃허브 파랑) */
+
+  /* 위 색에서 파생된 톤 (카드/박스용) */
+  --muted:     #6b6b6b;   /* 보조 텍스트 (날짜·캡션) */
+  --card:      #efece8;   /* 중립 카드 배경 */
+  --accent-bg: #f7ecec;   /* 강조 박스 배경(연한 붉은) */
+  --accent-line:#e4c9c9;  /* 강조 박스 테두리 */
+  --hairline:  #e3e3e1;   /* 얇은 구분선 */
+
+  /* 폰트 */
+  --font: "Pretendard", -apple-system, BlinkMacSystemFont,
+          "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+
+  /* 간격 (8배수 그리드) */
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:40px; --s6:48px; --s8:64px; --s10:80px;
+
+  /* 레이아웃 폭 */
+  --sidebar-w: 168px;   /* 좌측 목차 폭 */
+  --content-w: 720px;   /* 본문 폭 */
+  --gap:       56px;    /* 목차 ↔ 본문 간격 */
+}
+
+/* 다크모드 뷰어에서도 이 페이지는 원래 밝은 톤을 유지 */
+:root:not([data-theme="light"]){ color-scheme: light; }
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:96px; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.75;
+  letter-spacing:-0.01em;
+  word-break:keep-all;   /* 한글 줄바꿈: 단어 단위로 끊기 */
+  -webkit-font-smoothing:antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+a{ color:var(--link); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+img{ max-width:100%; height:auto; }
+
+/* ============================================================
+   1) 상단 고정 헤더
+   ============================================================ */
+.topbar{
+  position:sticky; top:0; z-index:100;
+  background:rgba(247,247,246,.92);
+  -webkit-backdrop-filter:saturate(180%) blur(8px);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--hairline);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.topbar__inner{
+  max-width:1080px; margin:0 auto;
+  height:60px; padding:0 24px;
+  display:flex; align-items:center; justify-content:flex-end; gap:32px;
+}
+.topnav{ position:relative; display:flex; align-items:center; gap:32px; }
+.topnav__item{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:16px; font-weight:700; color:var(--text);
+  padding:8px 2px; background:none; border:none; cursor:pointer;
+  font-family:inherit;
+}
+.topnav__item:hover{ text-decoration:none; }
+.topnav__item.is-active{ color:var(--accent); }
+.topnav__item.is-active::after{
+  content:""; position:absolute; left:0; right:0; bottom:2px;
+  height:2px; background:var(--accent); border-radius:2px;
+}
+/* '공론화 홈'과 '커뮤니티' 각각에 밑줄이 붙도록 개별 처리 */
+.topnav__link{ position:relative; color:var(--text); font-weight:700; font-size:16px; }
+.topnav__link:hover{ text-decoration:none; color:var(--accent); }
+.topnav__link.is-active{ color:var(--accent); }
+.topnav__link.is-active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-2px;
+  height:2px; background:var(--accent); border-radius:2px;
+}
+
+/* 커뮤니티 드롭다운 */
+.dropdown{ position:relative; }
+.dropdown__menu{
+  position:absolute; right:0; top:calc(100% + 12px);
+  min-width:210px; padding:10px;
+  background:#fff; border:1px solid var(--hairline); border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity .16s ease, transform .16s ease, visibility .16s;
+}
+.dropdown.is-open .dropdown__menu,
+.dropdown:hover .dropdown__menu,
+.dropdown:focus-within .dropdown__menu{ opacity:1; visibility:visible; transform:translateY(0); }
+/* 버튼↔메뉴 사이 빈틈에서도 마우스가 유지되도록 투명 다리 */
+.dropdown__menu::before{ content:""; position:absolute; top:-14px; left:0; right:0; height:14px; }
+.dropdown__link{
+  display:flex; align-items:center; gap:12px;
+  padding:11px 12px; border-radius:9px;
+  color:var(--text); font-size:15px; font-weight:600;
+}
+.dropdown__link:hover{ background:#f2f1ef; text-decoration:none; }
+.dropdown__ico{ font-size:17px; width:22px; text-align:center; }
+
+/* ============================================================
+   2) 레이아웃 : 좌측 목차 + 본문
+   ============================================================ */
+.layout{
+  max-width:1080px; margin:0 auto; padding:0 24px;
+  display:grid;
+  grid-template-columns:var(--sidebar-w) minmax(0,1fr);
+  column-gap:var(--gap);
+  align-items:start;
+}
+
+/* 좌측 고정 목차 */
+.toc{ position:sticky; top:92px; padding-top:var(--s8); }
+.toc__list{ list-style:none; margin:0; padding:0; }
+.toc__item{ margin:0; }
+.toc__link{
+  display:flex; align-items:baseline; gap:10px;
+  padding:7px 8px; margin-left:-8px; border-radius:7px;
+  color:var(--text); font-size:14px; line-height:1.4;
+}
+.toc__link:hover{ background:#efeeec; text-decoration:none; }
+.toc__link.is-active{ background:#efeeec; font-weight:700; }
+.toc__num{ color:var(--muted); font-size:12px; font-weight:600; min-width:16px; }
+.toc__link.is-active .toc__num{ color:var(--accent); }
+
+/* 본문 */
+.content{ max-width:var(--content-w); padding:var(--s8) 0 var(--s10); }
+
+/* 문서 헤더 */
+.doc-title{ font-size:36px; font-weight:800; line-height:1.25; margin:0 0 14px; letter-spacing:-0.02em; }
+.doc-meta{ color:var(--muted); font-size:14px; margin:0 0 var(--s4); }
+.doc-meta::before{ content:"📍 "; }
+
+/* 섹션 */
+.section{ margin-top:var(--s10); scroll-margin-top:88px; }
+.section__title{
+  font-size:24px; font-weight:800; margin:0 0 var(--s3);
+  padding-bottom:4px; border-bottom:2px solid var(--text); letter-spacing:-0.02em;
+}
+.section p{ margin:0 0 var(--s2); }
+.section h3{ font-size:18px; font-weight:800; margin:var(--s5) 0 var(--s2); }
+.section h4{ font-size:16px; font-weight:800; margin:var(--s4) 0 var(--s1); }
+.section ol, .section ul{ margin:0 0 var(--s2); padding-left:1.3em; }
+.section li{ margin:6px 0; }
+.small{ font-size:14px; color:var(--muted); }
+
+/* 강조 안내 박스 (aside) */
+.callout{
+  background:var(--accent-bg); border:1px solid var(--accent-line);
+  border-radius:14px; padding:var(--s3) var(--s4); margin:var(--s3) 0;
+}
+.callout--plain{ background:#e8e8e8; border:none; }
+.callout--gray{ background:#e8e8e8; border:none; }
+.callout--gray p, .callout--gray .small{ color:#1a1a1a; }
+.callout__icon{ font-size:18px; }
+.callout p:last-child{ margin-bottom:0; }
+
+/* 요약(1분 요약) 강조 문단 */
+.lead{ font-size:16px; }
+
+/* 링크 버튼 : 연한 베이지 면 + 회색 외곽선 */
+.btn, .btn--line{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 18px; border-radius:10px;
+  background:#f1efe8; color:#3f3f3f !important; font-weight:700; font-size:15px;
+  border:1px solid #bcbbb5;
+  margin:6px 8px 6px 0;
+}
+.btn:hover, .btn--line:hover{ text-decoration:none; background:#e9e6dd; }
+/* 링크형 : 프레임 없이 파란 밑줄 링크 */
+.linklike{ color:#0969da; text-decoration:underline; overflow-wrap:anywhere; }
+
+/* ============================================================
+   3) 타임라인 이미지 영역 (6장 이어붙임)
+   ============================================================ */
+.timeline{ margin:var(--s5) 0; }
+.timeline__imgs{
+  display:flex; flex-direction:column;
+  font-size:0;            /* 이미지 사이 미세 여백 제거 → 한 장처럼 이어짐 */
+  border-radius:12px; overflow:hidden;
+  background:var(--bg);
+}
+.timeline__imgs img{
+  display:block; width:100%; height:auto;
+  margin:0; padding:0; vertical-align:bottom;
+}
+.timeline__note{
+  font-size:13px; color:var(--muted); line-height:1.7;
+  margin-top:var(--s3);
+}
+.timeline__dl{ display:inline-block; margin-top:12px; font-size:14px; }
+
+/* ============================================================
+   4) 접이식 토글 (증거 자료 등)
+   ============================================================ */
+.toggle{ border:1px solid var(--hairline); border-radius:12px; margin:12px 0; overflow:hidden; background:#fff; }
+.toggle > summary{
+  list-style:none; cursor:pointer;
+  display:flex; align-items:center; gap:10px;
+  padding:16px 20px; font-size:16px; font-weight:700; color:var(--text);
+  background:#fbfbfa;
+}
+.toggle > summary::-webkit-details-marker{ display:none; }
+.toggle > summary::before{
+  content:"▶"; color:var(--muted); font-size:13px; flex:none;
+  transition:transform .2s ease;
+}
+.toggle[open] > summary::before{ transform:rotate(90deg); }
+.toggle > summary:hover{ background:#f4f3f1; }
+.toggle__body{ padding:12px 20px 20px; border-top:1px solid var(--hairline); }
+.toggle__body > *:first-child{ margin-top:0; }
+.toggle__body img{ border-radius:8px; margin:10px 0; border:1px solid var(--hairline); }
+.toggle .toggle{ background:#fcfcfb; }        /* 중첩 토글 */
+.evi-date{ font-weight:800; margin:var(--s4) 0 6px; }
+.cap{ font-size:13px; color:var(--muted); margin:4px 0 var(--s3); }
+
+/* 자리 안내(placeholder) — 실제 증거 넣으면 지워질 자리 */
+.placeholder{
+  border:1.5px dashed var(--line); border-radius:10px;
+  padding:22px; text-align:center; color:var(--muted); font-size:14px; background:#fafafa;
+}
+
+/* ============================================================
+   5) '기계' 인용 박스 (다크 채팅 스타일)
+   ============================================================ */
+.quote{
+  background:#1a1a1a; color:#f2f2f2; border-radius:14px;
+  padding:18px 20px 20px; margin:var(--s3) 0;
+}
+.quote__name{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:16px; margin-bottom:12px; }
+.quote__avatar{ width:34px; height:34px; border-radius:50%; background:#3a3d44; flex:none; }
+.quote__bubble{
+  background:#2c2c2e; border-radius:12px; padding:12px 14px;
+  font-size:15px; line-height:1.7; color:#eaeaea;
+}
+
+/* ============================================================
+   6) 모바일 목차 : 우측 하단 플로팅 버튼 + 오버레이
+   ============================================================ */
+.fab{
+  position:fixed; right:20px; bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  z-index:120; display:none;
+  width:56px; height:56px; border-radius:50%;
+  background:var(--text); color:#fff; border:none; cursor:pointer;
+  box-shadow:0 8px 22px rgba(0,0,0,.28);
+  font-size:22px; line-height:1;
+}
+.sheet{
+  position:fixed; inset:0; z-index:130; display:none;
+  background:rgba(0,0,0,.4);
+}
+.sheet.is-open{ display:block; }
+.sheet__panel{
+  position:absolute; right:0; top:0; bottom:0; width:min(320px,82vw);
+  background:var(--bg); padding:calc(24px + env(safe-area-inset-top,0px)) 20px 24px;
+  overflow-y:auto; box-shadow:-8px 0 30px rgba(0,0,0,.2);
+}
+.sheet__title{ font-weight:800; font-size:18px; margin:0 0 16px; }
+.sheet__close{
+  position:absolute; top:calc(16px + env(safe-area-inset-top,0px)); right:16px;
+  background:none; border:none; font-size:24px; cursor:pointer; color:var(--text);
+}
+
+/* 맨 위로 */
+.totop{
+  position:fixed; right:20px; bottom:calc(88px + env(safe-area-inset-bottom,0px));
+  z-index:110; width:44px; height:44px; border-radius:50%;
+  background:#fff; border:1px solid var(--line); color:var(--text);
+  cursor:pointer; font-size:16px; opacity:0; pointer-events:none;
+  transition:opacity .2s; box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+.totop.is-show{ opacity:1; pointer-events:auto; }
+
+/* ============================================================
+   반응형
+   ============================================================ */
+@media (max-width:900px){
+  .layout{ grid-template-columns:1fr; padding:0 20px; }
+  .toc{ display:none; }               /* PC 목차 숨김 */
+  .fab{ display:flex; align-items:center; justify-content:center; }
+  .content{ padding-top:var(--s6); }
+  .doc-title{ font-size:28px; }
+  .section__title{ font-size:21px; }
+  .topbar__inner{ padding:0 18px; gap:22px; }
+}
+@media (max-width:480px){
+  body{ font-size:15px; }
+  .doc-title{ font-size:24px; }
+  .btn{ width:100%; justify-content:center; }
+}
+
+/* 모션 최소화 설정 존중 */
+@media (prefers-reduced-motion:reduce){
+  *{ scroll-behavior:auto !important; transition:none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== 상단 헤더 ===================== -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <nav class="topnav">
+      <a class="topnav__link is-active" href="#top">공론화 홈</a>
+
+      <div class="dropdown">
+        <a class="topnav__link" href="community.html">커뮤니티 <span aria-hidden="true" style="font-size:11px;">▾</span></a>
+        <div class="dropdown__menu" role="menu">
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD">
+             <span class="dropdown__ico">📣</span> 공지사항</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9D%B8%EC%A6%9D%EA%B2%8C%EC%8B%9C%ED%8C%90">
+             <span class="dropdown__ico">🙌</span> 인증게시판</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90">
+             <span class="dropdown__ico">💬</span> 자유게시판</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EB%AF%BC%EC%9B%90-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%ED%8C%81">
+             <span class="dropdown__ico">💡</span> 민원 방법 및 팁</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9E%90%EB%A3%8C%EA%B2%8C%EC%8B%9C%ED%8C%90">
+             <span class="dropdown__ico">🔍</span> 자료게시판</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- ===================== 레이아웃 ===================== -->
+<div class="layout">
+
+  <!-- 좌측 목차 -->
+  <aside class="toc" aria-label="목차">
+    <ul class="toc__list" id="tocList">
+      <li class="toc__item"><a class="toc__link" href="#top"><span class="toc__num"></span>처음으로</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s0"><span class="toc__num">00</span>1분 요약</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s1"><span class="toc__num">01</span>타임라인</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s2"><span class="toc__num">02</span>쟁점 및 요구사항</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s3"><span class="toc__num">03</span>반론 및 정정 요청</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s4"><span class="toc__num">04</span>제보하기</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s5"><span class="toc__num">05</span>민원 제기 방법</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s6"><span class="toc__num">06</span>대피 공간</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s7"><span class="toc__num">07</span>마지막으로</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s8"><span class="toc__num">08</span>변경 이력</a></li>
+    </ul>
+  </aside>
+
+  <!-- 본문 -->
+  <main class="content">
+
+    <h1 class="doc-title">크랙 제작자 ‘기계’ 공론화</h1>
+    <p class="doc-meta">최종 수정 : 2026.09.08</p>
+
+    <!-- 상단 안내 -->
+    <div class="callout callout--gray">
+      <p>해당 공론화의 논점입니다. 제작자인 ‘기계’ 님이 ‘<strong>유료 서비스</strong>’이면서, 일반 유저에겐 ‘<strong>캐릭터 공략 불가</strong>’, ‘<strong>유저 뒷담</strong>’을 했으며, ‘기계’ 님이 초기에 만든 단톡방에서부터 이어진 친목 유저에겐 같은 ‘<strong>공략 불가 캐릭터들’을 ‘정실’로 인정</strong>해 준 것.</p>
+      <ol>
+        <li>공략 불가인데, 정실이 존재한 점</li>
+        <li>유저 뒷담화</li>
+        <li>공식 설정 및 전개를 일부 유저와 사적인 공간에서 먼저 제작되고 공유된 점</li>
+        <li>포타에 연재되는 소설은 세계관 분리라고 했지만, 실제로 연재된 소설은 똑같은 설정의 캐릭터가 ‘유사 사랑’을 하고 있는 점</li>
+      </ol>
+      <p class="small"><strong>※ 크랙 측에서 공론화 계정을 계속해서 계정 정지하고 있습니다.</strong> 만약 깃허브조차 신고가 되어 사라진다면, 하기 오픈채팅으로 모여주세요. 북마크 부탁드립니다.</p>
+      <p class="small">비상시 오픈채팅 링크: <a class="linklike" target="_blank" rel="noopener" href="https://open.kakao.com/o/gaiEFDLi">https://open.kakao.com/o/gaiEFDLi</a></p>
+      <p class="small">※ 해당 문서에서 정정사항이 있으면 <a href="#s3">3. 반론 및 정정 요청</a>을 확인하여 주세요.</p>
+      <p style="margin-top:16px; margin-bottom:0;"><a class="linklike" target="_blank" rel="noopener" href="https://github.com/plain-archive/machine-archive/blob/main/GUIDE.md">📖 깃허브가 처음이신가요? 이용 안내 보기</a></p>
+    </div>
+
+    <!-- ============ 0. 1분 요약 ============ -->
+    <section class="section" id="s0">
+      <h2 class="section__title">0. 1분 요약</h2>
+      <p class="lead">태온·설원회 세계관 캐릭터챗은 모든 유저가 같은 조건으로 유료로 이용하는 서비스입니다. 이 문서는 그 서비스의 <strong>공식 설정과 캐릭터 운영에 기계 님과 일부 유저의 사적 친분·공동 작업이 반영되어 왔고, 설정과 추후 전개가 그 소수에게 미리 공유되어 온 정황</strong>을 정리하고, 기계 님께 사실관계 확인과 해명을 요청하는 글입니다.</p>
+      <p>캐릭터챗은 유저 각자가 캐릭터와의 관계를 만드는 것을 전제로 판매되는 서비스인데, 그 기준이 되는 ’공식’의 상당 부분이 일부 유저와의 사적 공간에서 함께 만들어졌고, <strong>특정 유저의 해석과 관계가 그 안에 들어가 있었던 것</strong>으로 보입니다.</p>
+      <p>이 사안은 2025년 5월에 한 차례 공론화되었고, 기계 님은 폐쇄 친목방의 존재 등을 인정하고 사과했습니다. 많은 유저가 그 설명을 믿고 사안이 마무리된 것으로 받아들였습니다.</p>
+      <p><strong>그러나 이후 확인된 내용은 당시의 설명과 달랐습니다.</strong> 기계 님은 톡방에서 <strong>다른 유저들은 신경 쓰지 않고 그 방의 유저들만 특별 대우한다고 직접 말했고</strong>, 일반 유저들의 플레이를 평가·조롱하는 대화에는 본인의 발언도 포함되어 있습니다.</p>
+      <p>또한 <strong>일부 유저와 함께 관리해 온 설정 문서, 특정 유저의 해석을 내부에서 ’맞음’으로 표기한 기록, 공개된 공략 불가 공지와 달리 내부에는 사랑 가능으로 적혀 있던 불일치</strong>는 아직 한 번도 설명된 적이 없습니다.</p>
+      <p>기계 님은 2026년 8월 캐릭터챗의 공개 운영 종료와 링크 공개 전환을 밝혔으나, <strong>8월 27일 밤 9시 25분 경, 별도 예고 없이 전체 캐릭터챗을 비공개로 전환</strong>했습니다(제퍼, 태온1994 제외). <strong>그러나 현재 항목별 해명은 이루어지지 않은 상태입니다.</strong></p>
+      <p>이 문서가 요청하는 것은 작품 삭제나 창작 중단, 환불이 아니라 <strong>쟁점별 사실관계 확인과 공개 해명, 그리고 사과</strong>이며, 이후에도 확인할 수 있도록 경위를 기록해 둡니다.</p>
+      <p>이 글은 특정 유저 개인에게 책임을 묻지 않습니다. 문제는 특정 해석이 승인되어 공식에 들어갈 수 있었던 구조이고, 그 결정 권한은 기계 님에게 있었습니다.</p>
+    </section>
+
+    <!-- ============ 1. 타임라인 ============ -->
+    <section class="section" id="s1">
+      <h2 class="section__title">1. 타임라인</h2>
+      <p class="small">버전: 2026.09.07</p>
+
+      <div class="timeline">
+        <div class="timeline__imgs">
+          <img src="images/1.png" alt="타임라인 1" loading="lazy">
+          <img src="images/2.png" alt="타임라인 2" loading="lazy">
+          <img src="images/3.png" alt="타임라인 3" loading="lazy">
+          <img src="images/4.png" alt="타임라인 4" loading="lazy">
+          <img src="images/5.png" alt="타임라인 5" loading="lazy">
+          <img src="images/6.png" alt="타임라인 6" loading="lazy">
+        </div>
+
+        <p class="timeline__note">
+          <strong>타임라인 이미지 배포 안내</strong><br>
+          본 이미지는 자유롭게 공유·퍼가기 가능합니다. 단, 부분 크롭 외 내용 수정·왜곡·재편집은 금지합니다.
+          특정인에 대한 공격·조리돌림 목적의 사용을 금합니다.
+        </p>
+        <a class="timeline__dl" href="images/기계_공론화_타임라인_260907.zip" download>⬇ 기계_공론화_타임라인_260907.zip 내려받기</a>
+      </div>
+
+      <!-- 증거 자료 토글 -->
+      <details class="toggle">
+        <summary class="toggle__head">증거 자료</summary>
+        <div class="toggle__body">
+          <ol class="small">
+            <li>본 증거 이미지는 배포, 수정, 왜곡, 재편집 모두 불가합니다.</li>
+            <li>본 증거 속 ‘비공개 톡방’ 이미지는 해당 톡방의 일부입니다.</li>
+            <li>비공개 톡방 내부 내용입니다.</li>
+            <li>블랙필드는 공개 톡방입니다.</li>
+            <li>추가 증거물들은 ’추가 증거 안내’에서 최신 정보 순으로 업데이트 됩니다.</li>
+            <li>1차 공론화 때 해명된 자료와 추가적인 사과가 있던 자료들은 올리지 않았습니다. (예시: 공식 톡방 유저들을 ‘구석기시대’ 사람으로 표현한 것은 술 마시고 작성했다고 입장문에 올리셔서 해당 자료는 올리지 않았습니다.)</li>
+          </ol>
+
+          <h4>▶ 복구 중 누락된 이미지 재첨부</h4>
+          <img src="images/8.png" alt="증거 이미지" loading="lazy">
+          <p class="cap">복구 과정 중, 위 이미지가 누락되어 재업로드 합니다.</p>
+
+          <h4>1. 평소 비공개 톡방 내 정실 인정 및 유저 비하</h4>
+          <p class="small">(1) 정실 인정 및 특별대우: 폐쇄 톡방 내 인원들을 정실로 인정하며, 크랙 유저는 신경 쓰지 않고, 톡방 유저들만 설정을 스포해주는 등 특별대우 한다는 내용</p>
+          <p class="small">(2), (3) 블랙필드(공식 오픈채팅방) 유저 언급: 특정 유저들을 언급하며 뒷담화</p>
+          <img src="images/9.png" alt="증거 이미지" loading="lazy">
+          <p class="cap">(1) 정실 인정 및 특별 대우 발언</p>
+          <img src="images/10.png" alt="증거 이미지" loading="lazy">
+          <p class="cap">(2) 피해자 ’고래’님께 닉네임 공개 허락을 받았습니다.</p>
+          <img src="images/11.png" alt="증거 이미지" loading="lazy">
+          <p class="cap">(3) 피해자님께 업로드 허락을 받았습니다.</p>
+
+          <h4>2. 타임라인 순서 대화 내역</h4>
+
+          <p class="evi-date">[3월 24일] 연애, 리셋2 일부 설정</p>
+          <img src="images/12.webp" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[3월 말] 2차 비공개 톡방 ‘유교클럽’ 생성</p>
+          <img src="images/13.webp" alt="증거 이미지" loading="lazy">
+          <p class="cap">위 메시지는 참여 유저끼리의 대화입니다.</p>
+
+          <p class="evi-date">[4월 9일] 태설고 설정</p>
+          <p class="small">비공개 톡방에서 기계 님이 참여자들을 호출한 뒤, 등장인물의 학교 내 설정을 한 명씩 호명하며 결정했습니다. 학년 통합 여부, 각 인물의 역할(학생회장·부회장·방송부·유도부 등), 분단과 열 단위의 자리 배치, 급식 시간 행동, 놀림 소재 등을 참여자 제안과 기계 님 확정의 반복으로 정했고, 한 참여자가 만든 자리 배치도 이미지를 기계 님이 승인하기도 했습니다. 기계 님은 “정리·기록은 내가 한다”는 취지로 결과를 취합했고, 프롬프트 글자 수 제한으로 설정을 선별해 반영하겠다고 밝혔습니다.</p>
+          <p class="small">※ 해당 메시지 길이가 길어 일부만 업로드합니다.</p>
+          <img src="images/14.webp" alt="증거 이미지" loading="lazy">
+          <p class="cap">태설고 양호 선생님, 실제 유저 본명 삽입</p>
+          <img src="images/15.webp" alt="증거 이미지" loading="lazy">
+          <p class="cap">문지후 ‘태설고 대신 전해드립니다’ 페이지 운영 요청</p>
+          <img src="images/16.webp" alt="증거 이미지" loading="lazy">
+          <p class="cap">선도부 강이현, 정우현 급식실 2번 받기 요청</p>
+
+          <p class="evi-date">[4월 9일] 기계, 정모 공지 및 ‘남편’(=캐릭터)을 이입한 손편지, 등신대 전달 공지</p>
+          <img src="images/17.webp" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[4월 10일] 기승효 채팅에 톡방 유저를 NPC로 삽입</p>
+          <img src="images/18.webp" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[4월 11일] 특정 유저 커플링 테마곡 지정</p>
+          <img src="images/19.webp" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[4월 14일] 헌정 팬픽 톡방 공개 → [4월 17일] 페소 이름 변경 후 공개 → [2026년 2월 체셔 시작설정 기반 소설(예상)]</p>
+          <img src="images/20.png" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[4월 26일] 공식 커플 지지, 톡방 참여자 세계관 침투</p>
+          <img src="images/21.jpg" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[5월 3일(공론화 당일)] 기계, 유저 뒷담 “사과하지 마세요.”</p>
+          <img src="images/22.webp" alt="증거 이미지" loading="lazy">
+
+          <p class="evi-date">[6월] 기계 주도 ‘블랙필드’ 유저 뒷담화</p>
+          <p class="small">상단 이미지 참고</p>
+
+          <p class="small">※ 2025년 하반기에 진행된 사이버불링은 공개 가능하신 분만 폼 접수 부탁합니다.</p>
+        </div>
+      </details>
+
+      <!-- 추가 증거 자료 토글 -->
+      <details class="toggle">
+        <summary class="toggle__head">추가 증거 자료</summary>
+        <div class="toggle__body">
+          <ol class="small">
+            <li>게시글 작성 이후 추가적인 증거가 올라오면 해당 부분에 최신순으로 나열됩니다.</li>
+            <li>갱신 시, 갱신된 날짜가 제목에 표기됩니다.</li>
+            <li>상황 혹은 주제별로 토글을 사용하여 갱신됩니다.</li>
+          </ol>
+
+          <details class="toggle">
+            <summary class="toggle__head">'훈련장' 톡방 스탭진 사과문 (26.09.08. 카톡방 캡처 추가)</summary>
+            <div class="toggle__body">
+              <img src="images/29.jpg" alt="증거 이미지" loading="lazy">
+              <img src="images/30.jpg" alt="증거 이미지" loading="lazy">
+              <img src="images/31.jpg" alt="증거 이미지" loading="lazy">
+
+              <details class="toggle">
+                <summary class="toggle__head">기존 텍스트본</summary>
+                <div class="toggle__body">
+                  <img src="images/25.jpg" alt="증거 이미지" loading="lazy">
+                  <img src="images/26.jpg" alt="증거 이미지" loading="lazy">
+                  <img src="images/27.jpg" alt="증거 이미지" loading="lazy">
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <details class="toggle">
+            <summary class="toggle__head">기계, 제퍼 댓글 폐쇄 요청</summary>
+            <div class="toggle__body">
+              <img src="images/28.jpeg" alt="증거 이미지" loading="lazy">
+            </div>
+          </details>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ 2. 쟁점 및 요구사항 ============ -->
+    <section class="section" id="s2">
+      <h2 class="section__title">2. 쟁점 및 요구사항</h2>
+      <p>이 문서는 유료로 동일하게 이용해 온 유저들에게 필요한 <strong>사실관계 확인과 공개 해명</strong>을 요청합니다.</p>
+
+      <h3>쟁점별 공개 답변과 답변 방식</h3>
+      <p>각 쟁점에 대해 <strong>사실 여부와 경위를 공개적으로 답변</strong>해 주시기 바랍니다. 사과가 필요한 부분과 해명이 가능한 부분을 구분해 답하셔도 됩니다. 다만 답변 방식에 대해 세 가지를 요청합니다.</p>
+      <div class="callout callout--plain">
+        <ul>
+          <li><strong>일부 항목만 골라 답하지 않을 것.</strong> 답하지 않은 항목이 남지 않도록 모든 쟁점에 답해 주시기 바랍니다.</li>
+          <li><strong>사실관계와 무관한 사정 설명으로 쟁점을 흐리지 않을 것.</strong></li>
+          <li><strong>’톡방’처럼 특정 공간·특정 표현으로 범위를 좁혀, 실제 있었던 일을 축소하지 않을 것.</strong></li>
+        </ul>
+      </div>
+      <p>2025년 5월 당시 많은 유저가 설명을 믿고 사안이 마무리된 것으로 받아들였습니다. 그러나 이후 확인된 내용은 그 설명과 달랐습니다. 위 세 가지는 그 경험에서 나온 요청입니다.</p>
+
+      <h3>[쟁점 1] 공동 작성 설정 문서의 존재·범위 공개(=폐쇄 위키)</h3>
+      <p>일부 유저들과 함께 작성·편집해 온 <strong>설정 문서가 존재했는지</strong> 밝혀 주시기 바랍니다. 존재했다면 다음 세 가지를 함께 밝혀 주시기 바랍니다.</p>
+      <ol>
+        <li><strong>언제부터</strong> 운영되었는지</li>
+        <li><strong>어떤 내용</strong>이 담겼는지(공개된 공식 설정 / 미공개 전개 / 캐릭터와 유저 관계에 대한 기록 등)</li>
+        <li><strong>어느 범위까지 유저와 기계 님이</strong> 열람·편집에 참여했는지</li>
+      </ol>
+      <p>참여 유저 개인의 신상 공개를 요구하는 것이 아닙니다. 확인하려는 것은 <strong>이 문서의 존재와 범위가 과거 해명에서 왜 빠졌는가</strong>입니다.</p>
+
+      <h3>[쟁점 2] 공개 공지와 ‘폐쇄 위키’ 내용이 달랐던 부분에 대한 확인</h3>
+      <p>공개적으로 안내된 내용과 폐쇄 위키에 적힌 내용이 서로 달랐던 부분에 대해 다음을 확인해 주시기 바랍니다.</p>
+      <ul>
+        <li><strong>‘공략 불가’로 공지된 캐릭터가 폐쇄 위키에는 ’사랑 가능’ 쪽으로 적혀 있었던</strong> 이유</li>
+        <li>’사랑을 느낄 수 있는가’를 정리한 명단과 그 수정 기록을 <strong>누가 어떤 기준으로</strong> 써 왔는지</li>
+        <li>‘찐사랑이 생기면 모든 것을 바칠 대상’ 명단에 <strong>특정 유저의 유니버스를 ’맞음’으로 표기</strong>한 서술이 있는데, 그 ’맞음’은 <strong>누가 어떤 기준으로 정한 것인지</strong></li>
+        <li>캐릭터의 공개된 성향·공략 가능 여부가 내부 기록과 달랐던 경위</li>
+      </ul>
+
+      <h3>[쟁점 3] 특정 유저와 캐릭터의 관계, 그리고 ’특별 대우’에 관한 확인</h3>
+      <p>2025년 당시 반박 측은 “앞으로 ○○○의 정실은 ○○○님입니다” 같은 선언은 단 한 번도 없었다고 밝혔습니다.</p>
+      <p>그러나 여기서 묻는 것은 그런 문구가 있었느냐가 아니라, <strong>실제로 특정 유저들이 다르게 대우받았느냐</strong>입니다. 기계 님은 특정 대화방에서 <strong>플랫폼의 다른 유저들은 신경 쓰지 않으며, 그 방에 있는 사람들만 신경 쓰고 특별 대우한다</strong>고 말한 바 있습니다.</p>
+      <img src="images/23.png" alt="증거 이미지" loading="lazy" style="border-radius:8px; border:1px solid var(--hairline);">
+      <p>그것을 방 안의 모든 사람이 알고 있을 것이라고도 했고, 본인이 그 방에 <strong>많은 스포일러를 해 왔다</strong>는 점도 함께 밝혔습니다.</p>
+      <p>이 발언은 정보 공유가 플레이 방법이나 유저노트 수준이었다는 25년의 설명, 모든 유저를 동등하게 대해 왔다는 설명과 맞지 않습니다.</p>
+      <p>이 ’특별 대우’는 발언에만 그치지 않은 것으로 보입니다. 같은 공간의 대화에는 특정 유저와 캐릭터의 관계를 <strong>’정실’로 부르며 이를 인정하는 것으로 읽히는 부분</strong>이 있습니다.</p>
+      <p>또한 커플링 이름을 붙이거나 커플링별 테마곡을 지정하고 커플 일러스트를 제작한 정황, 특정 유저의 이름을 넣어 쓴 <strong>헌정 창작물의 설정과 제목이 공용 캐릭터의 시작 설정·상세설명에 반영</strong>된 것으로 보이는 부분도 있습니다.</p>
+      <p>유료로 같은 서비스를 이용하는 다른 유저로서는, 특정 유저와 캐릭터의 관계가 이렇게 공식 설정과 제작물에 반영되고 있었다는 사실을 알 수 없었습니다.</p>
+      <p>대우의 차이는 온라인에 그치지 않았습니다. 확보된 정황으로는 크고 작은 규모의 오프라인 모임이 <strong>상당히 잦은 빈도로</strong> 이루어졌던 것으로 보이며, 그 자리에서 미공개 전개가 어디까지 공유되었는지 일반 유저로서는 알 방법이 없습니다.</p>
+      <p>나아가 <strong>그 모임에서 공용 캐릭터의 설정을 새로 정하거나 기존 설정을 수정한 것으로 보이는 부분</strong>도 있습니다. 유료로 제공되는 공용 캐릭터의 설정이 일부 유저만 참석할 수 있는 자리에서 정해지거나 바뀌었다면, 그 과정은 다른 유저들이 확인할 수 없는 곳에 있었던 셈입니다.</p>
+      <p>이에 대해 다음을 <strong>직접</strong> 확인해 주시기 바랍니다.</p>
+      <ul>
+        <li>해당 방의 유저들만 신경 쓰며 특별 대우한다는 <strong>발언을 하신 사실이 있는지</strong>, 있었다면 그 ’특별 대우’가 <strong>구체적으로 무엇을 뜻했고 어떤 범위</strong>에서 이루어졌는지</li>
+        <li>특정 유저와 캐릭터의 관계를 <strong>’정실’로 인정하는 취지의 발언</strong>을 하신 사실이 있는지, 있었다면 그렇게 인정하신 기준과 경위를 밝혀 주시기 바랍니다.</li>
+        <li><strong>커플링 이름을 붙인 일, 커플링별 테마곡 지정, 커플 일러스트 제작</strong>이 어떤 기준으로 이루어졌는지</li>
+        <li>특정 유저의 이름을 넣어 쓴 <strong>헌정 창작물</strong>의 설정과 제목이 <strong>공용 캐릭터의 시작 설정·상세설명에 반영</strong>된 것이 맞는지, 반영이 있었다면 해당 요소를 <strong>밝히고 분리·정정할 의사</strong>가 있는지</li>
+        <li>크고 작은 <strong>오프라인 모임이 어느 정도의 빈도와 규모</strong>로 이루어졌고, 그 자리에서 미공개 전개나 설정이 <strong>어느 범위까지 공유</strong>되었는지</li>
+        <li>오프라인 모임에서 <strong>공용 캐릭터의 설정을 새로 정하거나 수정한 사실이 있는지</strong>, 있었다면 어떤 설정이 그렇게 정해지거나 바뀌었는지</li>
+        <li>비공개 톡방 유저를 대상으로 한 오프라인 모임에서 어떤 <strong>선물·혜택</strong>(손편지·등신대·굿즈 등)이 제공되었고, 그 대상은 어떤 기준으로 정해졌는지</li>
+      </ul>
+      <p>특정 유저 개인을 문제 삼으려는 것이 아닙니다. 유료로 같은 서비스를 이용하던 다른 유저들은 이런 대우의 차이를 알 수 없었고, 25년의 설명을 통해 <strong>그런 차이가 없었다고 이해</strong>해 왔습니다.</p>
+
+      <h3>[쟁점 4] 캐릭터챗 제작 과정에 대한 유저 참여 범위 확인</h3>
+      <p>스핀오프 ’태설고등학교’의 공개 전날인 <strong>2025년 4월 9일</strong>, 기계 님과 일부 유저가 참여한 대화방에서 <strong>태설고등학교 설정을 함께 정한 기록</strong>이 있다는 의혹 제기가 유저들 사이에서 이미 나온 바 있습니다.</p>
+      <p>학생회 역할, 동아리 소속, 교실 자리 배치, 캐릭터 간 놀림 소재 등 구체적 설정이 유저의 제안과 기계 님의 결정을 거쳐 논의되었고, 한 유저가 만든 자리 배치도를 기계 님이 승인한 기록, 프롬프트 분량 제한 때문에 제안 중 일부를 골라 반영하겠다는 대화도 있었다는 내용입니다.</p>
+      <ul>
+        <li>해당 대화에서 유저들이 제안한 설정이 실제 ’태설고등학교’의 <strong>프롬프트와 설정에 반영되었는지</strong>, 반영되었다면 어느 범위였는지</li>
+        <li>학교 내 <strong>NPC 역할을 맡을 유저를 모집</strong>하고, 지원한 유저의 <strong>페르소나명을 NPC 이름으로 확정</strong>한 사실이 있는지</li>
+        <li>친목 관계에 있던 유저의 페르소나나 닉네임을 공용 캐릭터챗에 사용한 사례가 <strong>그 외에 얼마나</strong> 있었는지</li>
+      </ul>
+      <p>일반 유저로서는 NPC의 이름이 특정 유저의 페르소나에서 온 것인지 알 길이 없습니다. 해당 유저 개인을 문제 삼으려는 것이 아니라, <strong>유료로 제공되는 공용 콘텐츠의 제작 과정에 어떤 기준으로 누가 참여할 수 있었는지</strong>를 확인하려는 것입니다.</p>
+
+      <h3>[쟁점 5] 미공개 정보가 먼저 공유된 경위와, 설정 결정에 미친 영향 확인</h3>
+      <p>25년 당시 미공개 전개를 일부 유저에게 공유한 점에 대해, 기계 님은 추후 모든 유저에게 알릴 예정이던 내용이었다고 설명한 바 있습니다. 그러나 이후 드러난 정황을 보면 이 설명만으로는 부족합니다.</p>
+      <p>먼저 시점의 문제입니다. 해당 내용의 <strong>공개는 2026년 여름에 이르러서야 시작</strong>되었습니다. ’추후 알릴 예정’이었다는 정보가 <strong>일부 유저에게는 1년 이상 앞서 전달</strong>되어 있던 셈입니다.</p>
+      <p>다음으로 내용의 문제입니다. 공유된 것은 단순한 예고 수준이 아니라, 태온이 1세대에서 2세대로 넘어간 후의 결과였습니다.</p>
+      <p>기승효가 2세대에 등장한다는 사실 자체는 이미 공개되어 있지만, 세대 교체 당시 <strong>특정 인물의 행방</strong>이나 <strong>기승효가 2세대에 남게 된 이유</strong>는 지금도 공개되지 않은 내용입니다.</p>
+      <p>그 밖에 <strong>특정 캐릭터의 생사 여부, 미래의 신체 상태 변화, 4세대 보스</strong>가 누구인지 같은 부분도 함께 공유되었습니다.</p>
+      <p>그리고 그 공유는 일방적인 전달에 그치지 않았습니다. [쟁점 1]과 [쟁점 4]에서 확인을 요청한 것처럼, 일부 유저는 설정을 함께 만들고 문서를 함께 관리하는 위치에 있었습니다.</p>
+      <p>즉 이 사안은 ‘스포일러를 조금 먼저 들은’ 문제가 아니라, <strong>전개가 확정되기 전 단계에 일부 유저가 함께 있었던</strong> 문제입니다.</p>
+      <p>이에 대해 다음을 확인해 주시기 바랍니다.</p>
+      <ul>
+        <li><strong>세대 교체 과정에서의 인물의 행방, 기승효가 2세대에 남게된 이유, 캐릭터의 생사, 미래의 신체 상태, 4세대 보스 등 전개의 핵심</strong>을 일반 공개보다 앞서 일부 유저에게 공유한 사실이 있는지, 있었다면 어느 범위까지였는지</li>
+        <li>’추후 모든 유저에게 알릴 예정’이었다는 설명과, <strong>실제 공개까지 1년 이상 걸린 시차</strong>는 어떻게 설명되는지</li>
+        <li>그 정보가 공유되던 시점에 해당 전개는 이미 확정된 상태였는지, 아니면 논의 중이었는지</li>
+        <li>논의 중이었다면, 캐릭터의 생사·전개 방향을 정하는 과정에 <strong>일부 유저의 의견이나 특정 유저와 캐릭터의 관계가 영향을 주었는지</strong>에 대해 설명을 요청합니다.</li>
+        <li>캐릭터와 유저의 관계를 정리한 명단이 어떤 기준으로 쓰였고, 누구에게 공유되었는지</li>
+      </ul>
+      <p>캐릭터의 생사와 전개는 모든 유저가 같은 시점에, 같은 조건에서 알게 되어야 하는 작품의 핵심입니다. 그 결정 과정에 사적 관계가 닿아 있었는지가 이 항목에서 확인하려는 것입니다.</p>
+
+      <h3>[쟁점 6] 친목 공간에서의 발언과 일반 유저에 대한 태도</h3>
+      <p>이 문서는 사람들이 사적으로 친해지는 것 자체를 문제 삼지 않습니다. 문제 삼는 것은 <strong>그 관계가 일반 유저들을 대하는 방식으로 이어졌다는 점</strong>입니다.</p>
+      <p>유료로 같은 서비스를 이용하는 유저들이 자신이 알지 못하는 공간에서 평가나 조롱의 대상이 되고 있었다면, 그것은 사적 친분의 영역이 아니라 <strong>제작자와 유저 사이의 문제</strong>입니다.</p>
+      <p>기계 님은 일반 유저들이 있는 공간을 ’구석기시대’로, 친목방 유저들을 ’문명을 아는 쪽’으로 표현한 사실을 인정하고 사과한 바 있습니다.</p>
+      <p>다만 그 표현은 한 번의 실수가 아니라, <strong>그 공간에서 일반 유저들을 대하던 방식의 일부</strong>였던 것으로 보입니다.</p>
+      <p>그 공간에서는 일반 유저들의 플레이나 해석을 두고 평가하거나 조롱하는 대화가 오간 부분이 있으며, 그중에는 <strong>기계 님 본인의 발언도 포함</strong>되어 있습니다.</p>
+      <p>25년 사과에서 언급된 표현은 그 일부에 지나지 않습니다. 다음은 대략적인 수위를 가늠할 수 있는 <strong>최소한의</strong> 예시입니다.</p>
+
+      <details class="toggle">
+        <summary class="toggle__head">일반 유저 뒷담화 자료</summary>
+        <div class="toggle__body">
+          <img src="images/24.png" alt="증거 이미지" loading="lazy">
+        </div>
+      </details>
+
+      <p>이에 대해 다음을 확인해 주시기 바랍니다.</p>
+      <ul>
+        <li>위와 같은 <strong>발언을 하신 사실이 있는지</strong></li>
+        <li>일반 유저들의 로그·해석이 그 톡방에 공유되고 평가나 조롱으로 이어질 때 <strong>이를 말리거나 멈춘 적이 있는지, 혹은 오히려 주도하신 것이 사실인지</strong></li>
+        <li>특정 해석이 <strong>’찐빠’로 불리면서</strong>, 그 기준에서 벗어난 플레이나 로그가 바로잡아야 할 것으로 여겨지는 분위기가 있었는지</li>
+        <li>입장문에서 ‘구석기시대’ 표현만 언급되고, <strong>그 표현이 나온 맥락과 일반 유저를 대하던 방식 전반은 왜 함께 다루어지지 않았는지</strong></li>
+      </ul>
+      <p>해당 공간에 참여했던 개별 유저를 문제 삼으려는 것이 아니라, <strong>제작자로서 그 공간에서 어떤 발언을 하고 어떤 태도를 취했는지</strong>를 확인하려는 것입니다.</p>
+
+      <h3>문제 제기 이후의 대응 방식</h3>
+      <p>현재 <strong>블로그 게시물 비공개, 태온1994, 제퍼를 제외한 전체 스토리 비공개, 일부 유저(댓글) 차단</strong>이 이루어진 상태입니다. 문제 제기가 나온 상황에서 작품과 관련 자료에 대한 접근을 막고 댓글을 차단하는 방식으로는, 유저들이 제기한 의문이 해소되기 어렵습니다.</p>
+      <p>이번 논점은 특정 개인에 대한 비난이 아니라 <strong>유료로 제공된 공용 콘텐츠의 제작 과정과 정보 공유 범위에 관한 사실관계</strong>입니다. 관련 의문에 대한 설명이 먼저 이루어지기를 요청합니다.</p>
+
+      <h3>향후 운영 기준, 그리고 이 문서가 다루지 않는 것</h3>
+      <p>기계 님은 태설 세계관의 소설 연재로 활동을 이어 가고 있습니다. 형태가 바뀌어도 태온·설원회의 설정과 전개를 정하는 권한은 그대로 기계 님에게 있습니다.</p>
+      <p>앞으로의 연재와 세계관 운영에서 <strong>특정 유저와의 사적 관계나 사적 공간의 논의가 설정에 끼어들지 않도록 어떤 기준을 둘 것인지</strong>, 입장을 밝혀 주시기 바랍니다.</p>
+      <p>또한 이 설정과 요소들은 <strong>비공개 전환으로 사라진 것이 아니라, 같은 세계관의 소설 연재로 이어지고 있습니다.</strong> 기존 캐릭터챗을 포함해, <strong>사적 관계나 사적 공간의 논의가 반영된 공식 설정·요소가 무엇이었는지</strong> 구체적으로 밝히고, 그 부분을 앞으로도 <strong>'공식'으로 이어 갈 것인지에 대한 입장</strong>을 밝혀 주시기 바랍니다. 콘텐츠가 비공개로 전환되어 유저가 더는 직접 확인할 수 없게 된 지금, 이 설명의 필요성은 오히려 커졌습니다.</p>
+      <p>마지막으로, 유료로 같은 서비스를 이용해 온 일반 유저들에게 <strong>진심 어린 사과</strong>를 요청합니다.</p>
+      <p>아울러 이 문서는 유료 서비스의 공식 설정과 운영을 최종적으로 결정하는 기계 님에게, 위 사항에 대한 확인과 해명을 요청하는 것입니다.</p>
+
+      <p style="margin-top:32px;">💡 <strong>(1) 쟁점별 공개 답변</strong> — 이 문서의 각 쟁점에 대해, 항목별로 공개된 블로그에서 답변해 주시기 바랍니다. 블로그에 답변 후 피드에도 해당 블로그 게시글을 추가로 달아주시기 바랍니다.</p>
+      <p><strong>(2) 공동 작성 문서의 존재·범위 공개</strong> — 캐릭터 설정 관련 내부 문서가 존재했다면, 그 범위와 작성 기간을 공개해 주시기 바랍니다.</p>
+    </section>
+
+    <!-- ============ 3. 반론 및 정정 요청 ============ -->
+    <section class="section" id="s3">
+      <h2 class="section__title">3. 반론 및 정정 요청</h2>
+      <p>📌 <strong>이 문서는 정정 요청을 받습니다.</strong> 기재된 내용 중 사실과 다른 부분이 있다면 정정을 요청해 주시기 바랍니다. 근거와 함께 접수된 요청은 검토 후 반영하며, 반영 결과는 아래에 공개적으로 기록합니다. 당사자 본인의 반론은 원문 그대로 게재합니다.</p>
+      <h3>정정 요청 방법</h3>
+      <a class="btn" target="_blank" rel="noopener" href="https://forms.gle/bP3VUti4vgptR7Y27">정정 요청하기 (구글폼)</a>
+      <ul>
+        <li>정정을 요청하는 부분 (쟁점 번호 / 해당 문장)</li>
+        <li>사실과 다른 설명 (내용의 요지 및 결과도 같이 작성)</li>
+        <li>명확한 근거 자료 (앞뒤 맥락 자른 뒤 일부분만 업로드 X)</li>
+        <li>공개 여부 선택 (전문 공개 / 요지만 공개 / 결과만 공개)</li>
+      </ul>
+    </section>
+
+    <!-- ============ 4. 제보하기 ============ -->
+    <section class="section" id="s4">
+      <h2 class="section__title">4. 제보하기</h2>
+      <p>🔒 <strong>제보자 보호</strong> — 원치 않으시면 문서에 싣지 않고 참고용으로만 확인합니다. 공개 범위는 제보자가 직접 선택하며, 제보자의 신원은 어떤 경우에도 공개하지 않습니다.</p>
+      <a class="btn" target="_blank" rel="noopener" href="https://forms.gle/TLRZuGt9edu3QiYp6">제보하기 (구글 폼)</a>
+
+      <h3>🔑 제보 코드란?</h3>
+      <p>제출해 주신 자료를 검토하다 보면 이런 경우가 생깁니다.</p>
+      <ul>
+        <li>대화 캡처는 있는데 앞뒤 내용이 잘려 있어 맥락이 안 잡힐 때</li>
+        <li>날짜가 화면에 안 보여서 언제 일인지 확인이 안 될 때</li>
+        <li>글로 적어주신 내용에 해당하는 캡처가 빠져 있을 때</li>
+      </ul>
+      <p>원래라면 제출하신 분께 연락드려 여쭤보면 됩니다. 그런데 이 폼은 익명 보호를 위해 이메일·연락처를 일절 받지 않아 연락드릴 방법이 없습니다. 그래서 연락처 대신 코드를 씁니다.</p>
+      <p>제출하실 때 4자리 코드를 직접 정해 주시면, 추가 확인이 필요할 때 제가 크랙 피드 댓글로 그 코드를 부릅니다. 본인이 정한 코드가 올라오면, 이 폼을 다시 제출해 주시면 됩니다. 폼을 다시 제출할 땐, 본인 확인 코드가 반드시 일치해야 됩니다.</p>
+
+      <h3>제보가 처리되는 방식</h3>
+      <ol>
+        <li>접수: 작업자만 열람합니다.</li>
+        <li>확인: 필요한 경우 추가 연락을 드립니다.</li>
+        <li>검토: 다른 자료와 대조해 검증 상태를 판단합니다.</li>
+        <li>반영: 제보자가 선택한 공개 범위 안에서만 문서에 반영합니다.</li>
+      </ol>
+    </section>
+
+    <!-- ============ 5. 민원 제기 방법 ============ -->
+    <section class="section" id="s5">
+      <h2 class="section__title">5. 민원 제기 방법: 공정위, 소보원, 한국콘텐츠진흥원</h2>
+      <p>현재 다수의 유저분들이 ‘공정거래위원회’, ‘한국소비자보호원’, ‘한국콘텐츠진흥원’ 등에 신고를 접수하고 있습니다. 신고 방법과 예시는 하단 링크에 정리되어 있으니 참고 부탁드립니다.</p>
+      <a class="btn" target="_blank" rel="noopener" href="https://sumptuous-catcher-d88.notion.site/3c3c71d527ad80c69b86e2cfc01c342d">신고 방법·예시 보기</a>
+    </section>
+
+    <!-- ============ 6. 깃허브 차단 발생 시 대피 공간 ============ -->
+    <section class="section" id="s6">
+      <h2 class="section__title">6. 깃허브 차단 발생 시 대피 공간</h2>
+      <p>지속적인 신고와 크랙의 비협조적인 행위로 소통 창구들이 계속 닫히는 상황이 발생합니다. 만약 깃허브 페이지까지 차단이 될 시에 다음 대피 공간인 오픈채팅으로 모여주세요.</p>
+
+      <p><strong>(1) 오픈채팅</strong>&nbsp; <a class="linklike" target="_blank" rel="noopener" href="https://open.kakao.com/o/gaiEFDLi">https://open.kakao.com/o/gaiEFDLi</a></p>
+      <p class="small">※ 오픈채팅은 카카오 프로필으로 참여해주세요.</p>
+
+      <p><strong>(2) 패들렛</strong>&nbsp; <a class="linklike" target="_blank" rel="noopener" href="https://padlet.com/abcde1212/padlet-ktsx78wxp7gomza9">https://padlet.com/abcde1212/padlet-ktsx78wxp7gomza9</a></p>
+      <p class="small">※ 현재는 읽기만 가능합니다.</p>
+    </section>
+
+    <!-- ============ 7. 마지막으로 ============ -->
+    <section class="section" id="s7">
+      <h2 class="section__title">7. 마지막으로</h2>
+      <p>이 문서에 실린 내용은 여러 경로로 겹쳐 들어온 제보를 우선해 담았습니다. 서로 다른 분들이 같은 내용을 알려 주신 경우를 기준으로 삼았고, 그 기준에 닿지 못해 싣지 못한 제보도 많습니다. 보내 주신 내용은 버리지 않고 참고 자료로 보관하고 있으며, 이후 확인이 되는 대로 반영하겠습니다.</p>
+      <p>용기 내어 접수해 주신 모든 분들께 감사드립니다.</p>
+    </section>
+
+    <!-- ============ 8. 변경 이력 ============ -->
+    <section class="section" id="s8">
+      <h2 class="section__title">8. 변경 이력</h2>
+      <ul class="small">
+        <li>26.09.08. '훈련장' 카톡방의 스탭들 사과문 제보 이미지(카톡 캡처본) 추가했습니다.</li>
+        <li>26.09.07. (1) 최상단 안내 내용 수정했습니다.(비상시 오픈카톡 안내) (2) 타임라인에서 '측근들, '훈련장' 인원에겐 사과', '기계, 제퍼 댓글 창 폐쇄', '공론화 및 소통 게시판 개설'을 추가했습니다. (3) 추가 증거 자료에서 '측근들, '훈련장' 인원에겐 사과', '기계, 제퍼 댓글창 폐쇄' 자료를 추가했습니다.</li>
+        <li>26.09.01. (1) 공론화 사이트 깃허브 페이지 안내 공지가 업로드 되었습니다. (2) 노션을 와이드뷰에서 기본뷰로 변경했습니다. (3) 그에 따라 문단 줄바꿈이 조금씩 수정되었습니다. (4) 26년 8월 31일 기준으로 크랙 측에서도 ‘제퍼' 댓글을 닫아둔 내역도 '문제 제기 이후의 대응 방식' 부분에 추가했습니다.</li>
+        <li>26.08.30. 복구 과정 중 누락된 이미지는 재업로드 했습니다.(’증거자료’ 및 ‘쟁점3’ 항목에 업로드 되었습니다.)</li>
+        <li>26.08.28. 공론화 복구를 하면서 조금씩 수정된 부분들이 있습니다.</li>
+        <li>26.08.23. 크랙 측에서 공론화 계정을 계속해서 계정 정지하고 있어 관련 공지를 최상단에 올렸습니다.</li>
+        <li>26.08.22. 최상단 ‘공론화 논점’ 내용 추가, 쟁점에서 ‘사이버불링’부분은 기계 님 최측근 행동이었지, 기계 님이 가담한 행동이 아니라서 삭제했습니다. 잘못된 표기 죄송합니다.(기존 타임라인 제작엔 측근 표기라 했으나, 최상단 요약 정리본에선 실수로 잘못 표기했습니다.)</li>
+        <li>26.08.21 ‘블랙필드(톡방) 유저 언급’ 부분에서 ‘피해자’ 거론된 부분은 ‘피해자’ 표기를 넣어 내용 구분이 될 수 있도록 수정했습니다.</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<!-- ===================== 모바일 목차 ===================== -->
+<button class="fab" id="fab" aria-label="목차 열기">☰</button>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet__panel">
+    <button class="sheet__close" id="sheetClose" aria-label="닫기">×</button>
+    <p class="sheet__title">목차</p>
+    <ul class="toc__list" id="tocListMobile">
+      <li><a class="toc__link" href="#top"><span class="toc__num"></span>처음으로</a></li>
+      <li><a class="toc__link" href="#s0"><span class="toc__num">00</span>1분 요약</a></li>
+      <li><a class="toc__link" href="#s1"><span class="toc__num">01</span>타임라인</a></li>
+      <li><a class="toc__link" href="#s2"><span class="toc__num">02</span>쟁점 및 요구사항</a></li>
+      <li><a class="toc__link" href="#s3"><span class="toc__num">03</span>반론 및 정정 요청</a></li>
+      <li><a class="toc__link" href="#s4"><span class="toc__num">04</span>제보하기</a></li>
+      <li><a class="toc__link" href="#s5"><span class="toc__num">05</span>민원 제기 방법</a></li>
+      <li><a class="toc__link" href="#s6"><span class="toc__num">06</span>대피 공간</a></li>
+      <li><a class="toc__link" href="#s7"><span class="toc__num">07</span>마지막으로</a></li>
+      <li><a class="toc__link" href="#s8"><span class="toc__num">08</span>변경 이력</a></li>
+    </ul>
+  </div>
+</div>
+
+<button class="totop" id="totop" aria-label="맨 위로">↑</button>
+
+<script>
+/* 커뮤니티 드롭다운은 CSS hover/focus로 처리 (JS 불필요) */
+
+/* 접이식 토글: 네이티브 <details> 사용 (JS 불필요) */
+
+/* 모바일 목차 시트 */
+(function(){
+  var fab = document.getElementById('fab');
+  var sheet = document.getElementById('sheet');
+  var close = document.getElementById('sheetClose');
+  function open(){ sheet.classList.add('is-open'); sheet.setAttribute('aria-hidden', false); }
+  function shut(){ sheet.classList.remove('is-open'); sheet.setAttribute('aria-hidden', true); }
+  fab.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  sheet.addEventListener('click', function(e){ if(e.target === sheet) shut(); });
+  document.getElementById('tocListMobile').addEventListener('click', function(e){ if(e.target.closest('a')) shut(); });
+})();
+
+/* 맨 위로 버튼 */
+(function(){
+  var totop = document.getElementById('totop');
+  window.addEventListener('scroll', function(){
+    totop.classList.toggle('is-show', window.scrollY > 600);
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+})();
+
+/* 스크롤 위치에 따라 목차 항목 하이라이트 (처음/마지막 포함 정확 감지) */
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#tocList .toc__link'));
+  var targets = links.map(function(l){
+    return { link:l, el:document.getElementById(l.getAttribute('href').replace('#','')) };
+  }).filter(function(t){ return t.el; });
+  if(!targets.length) return;
+
+  function onScroll(){
+    var y = window.scrollY || window.pageYOffset;
+    var threshold = y + 140;               // 뷰포트 상단에서 140px 지점 기준선
+    var current = targets[0];
+    for(var i=0; i<targets.length; i++){
+      var top = targets[i].el.getBoundingClientRect().top + y;
+      if(top <= threshold) current = targets[i];
+    }
+    if(y < 8) current = targets[0];        // 맨 위 → 처음으로
+    if(window.innerHeight + y >= document.documentElement.scrollHeight - 4){
+      current = targets[targets.length-1]; // 맨 아래 → 마지막 항목
+    }
+    links.forEach(function(l){ l.classList.remove('is-active'); });
+    current.link.classList.add('is-active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

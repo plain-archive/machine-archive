@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>커뮤니티 — 크랙 제작자 '기계' 공론화</title>
+<meta name="description" content="공론화 관련 이야기를 나누는 커뮤니티 게시판 안내입니다.">
+
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+:root{
+  --bg:#f7f7f6; --text:#1a1a1a; --accent:#9b2929; --line:#afafaf; --link:#0969da;
+  --muted:#6b6b6b; --hairline:#e3e3e1;
+  --font:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+:root:not([data-theme="light"]){ color-scheme:light; }
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--bg); color:var(--text); font-family:var(--font);
+  font-size:16px; line-height:1.75; letter-spacing:-0.01em; word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+a{ color:var(--link); text-decoration:none; }
+
+/* ===== 상단 헤더 (메인과 동일) ===== */
+.topbar{
+  position:sticky; top:0; z-index:100;
+  background:rgba(247,247,246,.92);
+  -webkit-backdrop-filter:saturate(180%) blur(8px); backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--hairline); padding-top:env(safe-area-inset-top,0px);
+}
+.topbar__inner{
+  max-width:1080px; margin:0 auto; height:60px; padding:0 24px;
+  display:flex; align-items:center; justify-content:flex-end; gap:32px;
+}
+.topnav{ position:relative; display:flex; align-items:center; gap:32px; }
+.topnav__link{ position:relative; color:var(--text); font-weight:700; font-size:16px; }
+.topnav__link:hover{ text-decoration:none; color:var(--accent); }
+.topnav__link.is-active{ color:var(--accent); }
+.topnav__link.is-active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px;
+  background:var(--accent); border-radius:2px;
+}
+.dropdown{ position:relative; }
+.dropdown__menu{
+  position:absolute; right:0; top:calc(100% + 12px); min-width:210px; padding:10px;
+  background:#fff; border:1px solid var(--hairline); border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity .16s ease, transform .16s ease, visibility .16s;
+}
+.dropdown:hover .dropdown__menu, .dropdown:focus-within .dropdown__menu{
+  opacity:1; visibility:visible; transform:translateY(0);
+}
+.dropdown__menu::before{ content:""; position:absolute; top:-14px; left:0; right:0; height:14px; }
+.dropdown__link{
+  display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:9px;
+  color:var(--text); font-size:15px; font-weight:600;
+}
+.dropdown__link:hover{ background:#f2f1ef; text-decoration:none; }
+.dropdown__ico{ font-size:17px; width:22px; text-align:center; }
+
+/* ===== 본문 ===== */
+.wrap{ max-width:880px; margin:0 auto; padding:64px 24px 96px; }
+.page-title{ font-size:36px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px; }
+.page-desc{ color:var(--muted); font-size:16px; margin:0 0 8px; }
+.page-note{ color:var(--muted); font-size:14px; margin:0 0 40px; }
+
+/* 카드 그리드 */
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.card{
+  display:flex; gap:16px; align-items:flex-start;
+  background:#fff; border:1px solid var(--hairline); border-radius:14px;
+  padding:22px 24px; transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+.card:hover{
+  text-decoration:none; border-color:#cfcfca;
+  box-shadow:0 8px 22px rgba(0,0,0,.06); transform:translateY(-2px);
+}
+.card--wide{ grid-column:1 / -1; background:#f1efe8; border-color:#bcbbb5; }
+.card__ico{ font-size:26px; line-height:1.2; flex:none; }
+.card__body{ display:flex; flex-direction:column; align-items:flex-start; min-width:0; }
+.card__title{ font-size:17px; font-weight:800; color:var(--text); margin:0 0 4px; }
+.card__desc{ font-size:14px; color:var(--muted); margin:0; line-height:1.6; }
+.card__go{ font-size:13px; color:var(--link); font-weight:600; margin-top:8px; display:inline-block; }
+
+.foot{ margin-top:48px; font-size:13px; color:var(--muted); line-height:1.7; }
+
+@media (max-width:640px){
+  .wrap{ padding:40px 20px 72px; }
+  .page-title{ font-size:28px; }
+  .grid{ grid-template-columns:1fr; }
+  .topbar__inner{ padding:0 18px; gap:22px; }
+}
+@media (prefers-reduced-motion:reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+
+<body>
+
+<!-- 상단 헤더 -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <nav class="topnav">
+      <a class="topnav__link" href="index.html">공론화 홈</a>
+      <div class="dropdown">
+        <a class="topnav__link is-active" href="community.html">커뮤니티 <span aria-hidden="true" style="font-size:11px;">▾</span></a>
+        <div class="dropdown__menu" role="menu">
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD">
+             <span class="dropdown__ico">📣</span> 공지사항</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9D%B8%EC%A6%9D%EA%B2%8C%EC%8B%9C%ED%8C%90">
+             <span class="dropdown__ico">🙌</span> 인증게시판</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90">
+             <span class="dropdown__ico">💬</span> 자유게시판</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EB%AF%BC%EC%9B%90-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%ED%8C%81">
+             <span class="dropdown__ico">💡</span> 민원 방법 및 팁</a>
+          <a class="dropdown__link" role="menuitem" target="_blank" rel="noopener"
+             href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9E%90%EB%A3%8C%EA%B2%8C%EC%8B%9C%ED%8C%90">
+             <span class="dropdown__ico">🔍</span> 자료게시판</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="page-title">커뮤니티</h1>
+  <p class="page-desc">공론화 관련 이야기를 나누고, 민원 방법과 자료를 공유하는 공간입니다.</p>
+  <p class="page-note">아래 게시판은 깃허브(Discussions)에서 열립니다. 글 읽기는 누구나 가능하며, 글쓰기·댓글은 깃허브 로그인 후 이용할 수 있습니다.</p>
+
+  <div class="grid">
+
+    <!-- 전체보기 (강조 카드) -->
+    <a class="card card--wide" target="_blank" rel="noopener"
+       href="https://github.com/plain-archive/machine-archive/discussions">
+      <span class="card__ico">📋</span>
+      <span class="card__body">
+        <span class="card__title">게시판 전체보기</span>
+        <span class="card__desc">모든 게시판의 글을 한곳에서 볼 수 있습니다.</span>
+        <span class="card__go">깃허브에서 열기 →</span>
+      </span>
+    </a>
+
+    <!-- 공지사항 -->
+    <a class="card" target="_blank" rel="noopener"
+       href="https://github.com/plain-archive/machine-archive/discussions/categories/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD">
+      <span class="card__ico">📣</span>
+      <span class="card__body">
+        <span class="card__title">공지사항</span>
+        <span class="card__desc">공론화 관련과 민원 관련 등 주요 안내를 확인할 수 있습니다.</span>
+        <span class="card__go">깃허브에서 열기 →</span>
+      </span>
+    </a>
+
+    <!-- 인증게시판 -->
+    <a class="card" target="_blank" rel="noopener"
+       href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9D%B8%EC%A6%9D%EA%B2%8C%EC%8B%9C%ED%8C%90">
+      <span class="card__ico">🙌</span>
+      <span class="card__body">
+        <span class="card__title">인증게시판</span>
+        <span class="card__desc">민원 접수 등을 인증하고 공유하는 게시판</span>
+        <span class="card__go">깃허브에서 열기 →</span>
+      </span>
+    </a>
+
+    <!-- 자유게시판 -->
+    <a class="card" target="_blank" rel="noopener"
+       href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90">
+      <span class="card__ico">💬</span>
+      <span class="card__body">
+        <span class="card__title">자유게시판</span>
+        <span class="card__desc">자유로운 게시글 업로드가 가능하나, 문제가 야기 될 경우 제재됩니다.</span>
+        <span class="card__go">깃허브에서 열기 →</span>
+      </span>
+    </a>
+
+    <!-- 민원 방법 및 팁 -->
+    <a class="card" target="_blank" rel="noopener"
+       href="https://github.com/plain-archive/machine-archive/discussions/categories/%EB%AF%BC%EC%9B%90-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%ED%8C%81">
+      <span class="card__ico">💡</span>
+      <span class="card__body">
+        <span class="card__title">민원 방법 및 팁</span>
+        <span class="card__desc">공정위·소비자원·콘텐츠진흥원 등 민원 방법과 정보 공유</span>
+        <span class="card__go">깃허브에서 열기 →</span>
+      </span>
+    </a>
+
+    <!-- 자료게시판 -->
+    <a class="card" target="_blank" rel="noopener"
+       href="https://github.com/plain-archive/machine-archive/discussions/categories/%EC%9E%90%EB%A3%8C%EA%B2%8C%EC%8B%9C%ED%8C%90">
+      <span class="card__ico">🔍</span>
+      <span class="card__body">
+        <span class="card__title">자료게시판</span>
+        <span class="card__desc">공론화 관련 자료를 공유할 수 있습니다.</span>
+        <span class="card__go">깃허브에서 열기 →</span>
+      </span>
+    </a>
+
+  </div>
+
+  <p class="foot">
+    깃허브가 처음이신가요?
+    <a target="_blank" rel="noopener" href="https://github.com/plain-archive/machine-archive/blob/main/GUIDE.md">📖 이용 안내 보기</a><br>
+    만약 깃허브 페이지가 차단되면 <a href="index.html#s6">대피 공간</a>(오픈채팅·패들렛)을 이용해 주세요.
+  </p>
+</main>
+
+</body>
+</html>
