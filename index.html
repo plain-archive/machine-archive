@@ -388,7 +388,7 @@ img{ max-width:100%; height:auto; }
   <main class="content">
 
     <h1 class="doc-title">크랙 제작자 ‘기계’ 공론화</h1>
-    <p class="doc-meta">최종 수정 : 2026.10.21. <span class="doc-meta__sep">·</span> <a class="linklike" href="#s2">02 비공개 톡방 타임라인 바로가기</a></p>
+    <p class="doc-meta">최종 수정 : 2026.10.21. <span class="doc-meta__sep">·</span> <a class="linklike" href="#ev-youngdongdan">새 증거 추가: 비공개 톡방 내 '영동단' 명단 공지</a></p>
 
     <!-- 상단 안내 -->
     <div class="callout callout--gray">
@@ -523,7 +523,7 @@ img{ max-width:100%; height:auto; }
             <li>상황 혹은 주제별로 토글을 사용하여 갱신됩니다.</li>
           </ol>
 
-          <details class="toggle">
+          <details class="toggle" id="ev-youngdongdan">
             <summary class="toggle__head">비공개 톡방 내 '영동단' 명단 공지 (26.10.21. 추가)</summary>
             <div class="toggle__body">
               <p class="small">2025년 4월 24일, 비공개 톡방 공지 게시판에 기계 님이 '영혼동기화단(영동단)' 명단을 올린 내용과, 같은 달 28일·30일 명단에 인원이 추가된 내용입니다. 제3자의 닉네임은 일부 가렸습니다.</p>
@@ -839,6 +839,27 @@ img{ max-width:100%; height:auto; }
 /* 커뮤니티 드롭다운은 CSS hover/focus로 처리 (JS 불필요) */
 
 /* 접이식 토글: 네이티브 <details> 사용 (JS 불필요) */
+
+/* 토글 안쪽으로 가는 바로가기: 감싼 토글을 모두 펼친 뒤 이동 */
+(function(){
+  function reveal(hash){
+    if(!hash || hash.length < 2) return;
+    var el = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if(!el) return;
+    for(var n = el; n; n = n.parentElement){
+      if(n.tagName === 'DETAILS') n.open = true;
+    }
+    return el;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(a) reveal(a.getAttribute('href'));
+  });
+  if(location.hash){
+    var el = reveal(location.hash);
+    if(el) setTimeout(function(){ el.scrollIntoView(); }, 0);
+  }
+})();
 
 /* 모바일 목차 시트 */
 (function(){
