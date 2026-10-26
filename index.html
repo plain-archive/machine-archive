@@ -166,7 +166,7 @@ img{ max-width:100%; height:auto; }
 .doc-meta__sep{ margin:0 6px; }
 
 /* 섹션 */
-.section{ margin-top:var(--s10); scroll-margin-top:88px; }
+.section{ margin-top:var(--s10); }   /* 앵커 이동 시 상단 여백은 html의 scroll-padding-top(96px)이 담당 */
 .section__title{
   font-size:24px; font-weight:800; margin:0 0 var(--s3);
   padding-bottom:4px; border-bottom:2px solid var(--text); letter-spacing:-0.02em;
@@ -416,12 +416,13 @@ img{ max-width:100%; height:auto; }
       <li class="toc__item"><a class="toc__link" href="#s1"><span class="toc__num">01</span>타임라인</a></li>
       <li class="toc__item"><a class="toc__link" href="#s2"><span class="toc__num">02</span>비공개 톡방 타임라인</a></li>
       <li class="toc__item"><a class="toc__link" href="#s3"><span class="toc__num">03</span>쟁점 및 요구사항</a></li>
-      <li class="toc__item"><a class="toc__link" href="#s4"><span class="toc__num">04</span>반론 및 정정 요청</a></li>
-      <li class="toc__item"><a class="toc__link" href="#s5"><span class="toc__num">05</span>제보하기</a></li>
-      <li class="toc__item"><a class="toc__link" href="#s6"><span class="toc__num">06</span>민원 제기 방법</a></li>
-      <li class="toc__item"><a class="toc__link" href="#s7"><span class="toc__num">07</span>대피 공간</a></li>
-      <li class="toc__item"><a class="toc__link" href="#s8"><span class="toc__num">08</span>마지막으로</a></li>
-      <li class="toc__item"><a class="toc__link" href="#s9"><span class="toc__num">09</span>변경 이력</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s4"><span class="toc__num">04</span>입장문 답변 대조</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s5"><span class="toc__num">05</span>반론 및 정정 요청</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s6"><span class="toc__num">06</span>제보하기</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s7"><span class="toc__num">07</span>민원 제기 방법</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s8"><span class="toc__num">08</span>대피 공간</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s9"><span class="toc__num">09</span>마지막으로</a></li>
+      <li class="toc__item"><a class="toc__link" href="#s10"><span class="toc__num">10</span>변경 이력</a></li>
     </ul>
   </aside>
 
@@ -429,7 +430,7 @@ img{ max-width:100%; height:auto; }
   <main class="content">
 
     <h1 class="doc-title">크랙 제작자 ‘기계’ 공론화</h1>
-    <p class="doc-meta">최종 수정 : 2026.10.27. <span class="doc-meta__sep">·</span> <a class="linklike" href="#statement-1025">새 내용 추가: 10월 25일 입장문 답변 대조</a></p>
+    <p class="doc-meta">최종 수정 : 2026.10.27. <span class="doc-meta__sep">·</span> <a class="linklike" href="#s4">새 내용 추가: 10월 25일 입장문 답변 대조</a></p>
 
     <!-- 상단 안내 -->
     <div class="callout callout--gray">
@@ -442,7 +443,7 @@ img{ max-width:100%; height:auto; }
       </ol>
       <p class="small"><strong>※ 크랙 측에서 공론화 계정을 계속해서 계정 정지하고 있습니다.</strong> 만약 깃허브조차 신고가 되어 사라진다면, 하기 오픈채팅으로 모여주세요. 북마크 부탁드립니다.</p>
       <p class="small">비상시 오픈채팅 링크: <a class="linklike" target="_blank" rel="noopener" href="https://open.kakao.com/o/gaiEFDLi">https://open.kakao.com/o/gaiEFDLi</a></p>
-      <p class="small">※ 해당 문서에서 정정사항이 있으면 <a href="#s4">4. 반론 및 정정 요청</a>을 확인하여 주세요.</p>
+      <p class="small">※ 해당 문서에서 정정사항이 있으면 <a href="#s5">5. 반론 및 정정 요청</a>을 확인하여 주세요.</p>
       <p style="margin-top:16px; margin-bottom:0;"><a class="linklike" target="_blank" rel="noopener" href="https://github.com/plain-archive/machine-archive/blob/main/GUIDE.md">📖 깃허브가 처음이신가요? 이용 안내 보기</a></p>
     </div>
 
@@ -454,7 +455,7 @@ img{ max-width:100%; height:auto; }
       <p>이 사안은 2025년 5월에 한 차례 공론화되었고, 기계 님은 폐쇄 친목방의 존재 등을 인정하고 사과했습니다. 많은 유저가 그 설명을 믿고 사안이 마무리된 것으로 받아들였습니다.</p>
       <p><strong>그러나 이후 확인된 내용은 당시의 설명과 달랐습니다.</strong> 기계 님은 톡방에서 <strong>다른 유저들은 신경 쓰지 않고 그 방의 유저들만 특별 대우한다고 직접 말했고</strong>, 일반 유저들의 플레이를 평가·조롱하는 대화에는 본인의 발언도 포함되어 있습니다.</p>
       <p>또한 <strong>일부 유저와 함께 관리해 온 설정 문서</strong>는 10월 25일 입장문에서 존재가 인정되었으나, <strong>특정 유저의 해석을 내부에서 ’맞음’으로 표기한 기록과 공개된 공략 불가 공지와 달리 내부에는 사랑 가능으로 적혀 있던 불일치</strong>는 아직 설명되지 않았습니다.</p>
-      <p>기계 님은 2026년 8월 캐릭터챗의 공개 운영 종료와 링크 공개 전환을 밝혔으나, <strong>8월 27일 밤 9시 25분 경, 별도 예고 없이 전체 캐릭터챗을 비공개로 전환</strong>했습니다(제퍼, 태온1994 제외). 이후 10월 25일 블로그에 입장문을 게시했으나, <strong>요청 항목 35개 중 10개는 언급되지 않았고 11개는 일부에만 답했습니다</strong>(<a href="#statement-1025">10월 25일 입장문 답변 대조</a> 참고).</p>
+      <p>기계 님은 2026년 8월 캐릭터챗의 공개 운영 종료와 링크 공개 전환을 밝혔으나, <strong>8월 27일 밤 9시 25분 경, 별도 예고 없이 전체 캐릭터챗을 비공개로 전환</strong>했습니다(제퍼, 태온1994 제외). 이후 10월 25일 블로그에 입장문을 게시했으나, <strong>요청 항목 35개 중 10개는 언급되지 않았고 11개는 일부에만 답했습니다</strong>(<a href="#s4">10월 25일 입장문 답변 대조</a> 참고).</p>
       <p>이 문서가 요청하는 것은 작품 삭제나 창작 중단, 환불이 아니라 <strong>쟁점별 사실관계 확인과 공개 해명, 그리고 사과</strong>이며, 이후에도 확인할 수 있도록 경위를 기록해 둡니다.</p>
       <p>이 글은 특정 유저 개인에게 책임을 묻지 않습니다. 문제는 특정 해석이 승인되어 공식에 들어갈 수 있었던 구조이고, 그 결정 권한은 기계 님에게 있었습니다.</p>
     </section>
@@ -466,13 +467,13 @@ img{ max-width:100%; height:auto; }
 
       <div class="timeline">
         <div class="timeline__imgs">
-          <img src="images/1.png" alt="타임라인 1" loading="lazy">
-          <img src="images/2.png" alt="타임라인 2" loading="lazy">
-          <img src="images/3.png" alt="타임라인 3" loading="lazy">
-          <img src="images/4.png" alt="타임라인 4" loading="lazy">
-          <img src="images/5.png" alt="타임라인 5" loading="lazy">
-          <img src="images/6.png?v=0925" alt="타임라인 6" loading="lazy">
-          <img src="images/7.png?v=1026" alt="타임라인 7" loading="lazy">
+          <img width="2250" height="4135" src="images/1.png" alt="타임라인 1" loading="lazy">
+          <img width="2250" height="2960" src="images/2.png" alt="타임라인 2" loading="lazy">
+          <img width="2250" height="3439" src="images/3.png" alt="타임라인 3" loading="lazy">
+          <img width="2250" height="3327" src="images/4.png" alt="타임라인 4" loading="lazy">
+          <img width="2250" height="3298" src="images/5.png" alt="타임라인 5" loading="lazy">
+          <img width="2250" height="3436" src="images/6.png?v=0925" alt="타임라인 6" loading="lazy">
+          <img width="2250" height="4207" src="images/7.png?v=1026" alt="타임라인 7" loading="lazy">
         </div>
 
         <p class="timeline__note">
@@ -497,56 +498,56 @@ img{ max-width:100%; height:auto; }
           </ol>
 
           <h4>▶ 복구 중 누락된 이미지 재첨부</h4>
-          <img src="images/8.png" alt="증거 이미지" loading="lazy">
+          <img width="1179" height="323" src="images/8.png" alt="증거 이미지" loading="lazy">
           <p class="cap">복구 과정 중, 위 이미지가 누락되어 재업로드 합니다.</p>
 
           <h4>1. 평소 비공개 톡방 내 정실 인정 및 유저 비하</h4>
           <p class="small">(1) 정실 인정 및 특별대우: 폐쇄 톡방 내 인원들을 정실로 인정하며, 크랙 유저는 신경 쓰지 않고, 톡방 유저들만 설정을 스포해주는 등 특별대우 한다는 내용</p>
           <p class="small">(2), (3) 블랙필드(공식 오픈채팅방) 유저 언급: 특정 유저들을 언급하며 뒷담화</p>
-          <img src="images/9.png" alt="증거 이미지" loading="lazy">
+          <img width="1080" height="1994" src="images/9.png" alt="증거 이미지" loading="lazy">
           <p class="cap">(1) 정실 인정 및 특별 대우 발언</p>
-          <img src="images/10.png" alt="증거 이미지" loading="lazy">
+          <img width="949" height="1800" src="images/10.png" alt="증거 이미지" loading="lazy">
           <p class="cap">(2) 피해자 ’고래’님께 닉네임 공개 허락을 받았습니다.</p>
           <p class="cap">※ 기계 님은 10월 25일 입장문에서, 위 이미지 맨 아래 캡처(‘유도’, ‘지가’ 부분)는 해당 피해자가 아닌 다른 날 다른 사람에 대한 대화라고 주장했습니다.</p>
-          <img src="images/11.png" alt="증거 이미지" loading="lazy">
+          <img width="949" height="1197" src="images/11.png" alt="증거 이미지" loading="lazy">
           <p class="cap">(3) 피해자님께 업로드 허락을 받았습니다.</p>
 
           <h4>2. 타임라인 순서 대화 내역</h4>
 
           <p class="evi-date">[3월 24일] 연애, 리셋2 일부 설정</p>
-          <img src="images/12.webp" alt="증거 이미지" loading="lazy">
+          <img width="344" height="70" src="images/12.webp" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[3월 말] 2차 비공개 톡방 ‘유교클럽’ 생성</p>
-          <img src="images/13.webp" alt="증거 이미지" loading="lazy">
+          <img width="449" height="532" src="images/13.webp" alt="증거 이미지" loading="lazy">
           <p class="cap">위 메시지는 참여 유저끼리의 대화입니다.</p>
 
           <p class="evi-date">[4월 9일] 태설고 설정</p>
           <p class="small">비공개 톡방에서 기계 님이 참여자들을 호출한 뒤, 등장인물의 학교 내 설정을 한 명씩 호명하며 결정했습니다. 학년 통합 여부, 각 인물의 역할(학생회장·부회장·방송부·유도부 등), 분단과 열 단위의 자리 배치, 급식 시간 행동, 놀림 소재 등을 참여자 제안과 기계 님 확정의 반복으로 정했고, 한 참여자가 만든 자리 배치도 이미지를 기계 님이 승인하기도 했습니다. 기계 님은 “정리·기록은 내가 한다”는 취지로 결과를 취합했고, 프롬프트 글자 수 제한으로 설정을 선별해 반영하겠다고 밝혔습니다.</p>
           <p class="small">※ 해당 메시지 길이가 길어 일부만 업로드합니다.</p>
-          <img src="images/14.webp" alt="증거 이미지" loading="lazy">
+          <img width="404" height="131" src="images/14.webp" alt="증거 이미지" loading="lazy">
           <p class="cap">태설고 양호 선생님, 실제 유저 본명 삽입</p>
-          <img src="images/15.webp" alt="증거 이미지" loading="lazy">
+          <img width="296" height="69" src="images/15.webp" alt="증거 이미지" loading="lazy">
           <p class="cap">문지후 ‘태설고 대신 전해드립니다’ 페이지 운영 요청</p>
-          <img src="images/16.webp" alt="증거 이미지" loading="lazy">
+          <img width="721" height="99" src="images/16.webp" alt="증거 이미지" loading="lazy">
           <p class="cap">선도부 강이현, 정우현 급식실 2번 받기 요청</p>
 
           <p class="evi-date">[4월 9일] 기계, 정모 공지 및 ‘남편’(=캐릭터)을 이입한 손편지, 등신대 전달 공지</p>
-          <img src="images/17.webp" alt="증거 이미지" loading="lazy">
+          <img width="449" height="255" src="images/17.webp" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[4월 10일] 기승효 채팅에 톡방 유저를 NPC로 삽입</p>
-          <img src="images/18.webp" alt="증거 이미지" loading="lazy">
+          <img width="360" height="286" src="images/18.webp" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[4월 11일] 특정 유저 커플링 테마곡 지정</p>
-          <img src="images/19.webp" alt="증거 이미지" loading="lazy">
+          <img width="524" height="277" src="images/19.webp" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[4월 14일] 헌정 팬픽 톡방 공개 → [4월 17일] 페소 이름 변경 후 공개 → [2026년 2월 체셔 시작설정 기반 소설(예상)]</p>
-          <img src="images/20.png" alt="증거 이미지" loading="lazy">
+          <img width="726" height="871" src="images/20.png" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[4월 26일] 공식 커플 지지, 톡방 참여자 세계관 침투</p>
-          <img src="images/21.jpg" alt="증거 이미지" loading="lazy">
+          <img width="1209" height="1763" src="images/21.jpg" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[5월 3일(공론화 당일)] 기계, 유저 뒷담 “사과하지 마세요.”</p>
-          <img src="images/22.webp" alt="증거 이미지" loading="lazy">
+          <img width="420" height="386" src="images/22.webp" alt="증거 이미지" loading="lazy">
 
           <p class="evi-date">[6월] 기계 주도 ‘블랙필드’ 유저 뒷담화</p>
           <p class="small">상단 이미지 참고</p>
@@ -569,9 +570,9 @@ img{ max-width:100%; height:auto; }
             <summary class="toggle__head">비공개 톡방 내 '영동단' 명단 공지 (26.10.21. 추가)</summary>
             <div class="toggle__body">
               <p class="small">2025년 4월 24일, 비공개 톡방 공지 게시판에 기계 님이 '영혼동기화단(영동단)' 명단을 올린 내용과, 같은 달 28일·30일 명단에 인원이 추가된 내용입니다. 제3자의 닉네임은 일부 가렸습니다.</p>
-              <img src="images/38.png" alt="증거 이미지" loading="lazy">
-              <img src="images/39.png" alt="증거 이미지" loading="lazy">
-              <img src="images/40.png" alt="증거 이미지" loading="lazy">
+              <img width="1920" height="2816" src="images/38.png" alt="증거 이미지" loading="lazy">
+              <img width="1920" height="2266" src="images/39.png" alt="증거 이미지" loading="lazy">
+              <img width="1920" height="1823" src="images/40.png" alt="증거 이미지" loading="lazy">
             </div>
           </details>
 
@@ -579,34 +580,34 @@ img{ max-width:100%; height:auto; }
             <summary class="toggle__head">연애, 리셋 친목 유저들과 함께 제작한 정황 근거 (26.10.15. 추가)</summary>
             <div class="toggle__body">
               <p class="small">2025년 2월 19일과 3월 24일, 비공개 톡방에서 기계 님이 연애, 리셋 3세대·2세대 등장인물의 직업을 참여자들에게 추천받은 내용입니다. 제3자의 닉네임은 기호 또는 역할명으로 바꾸었습니다.</p>
-              <img src="images/32.png" alt="증거 이미지" loading="lazy">
-              <img src="images/33.png" alt="증거 이미지" loading="lazy">
-              <img src="images/34.png" alt="증거 이미지" loading="lazy">
+              <img width="1080" height="702" src="images/32.png" alt="증거 이미지" loading="lazy">
+              <img width="1080" height="702" src="images/33.png" alt="증거 이미지" loading="lazy">
+              <img width="1080" height="946" src="images/34.png" alt="증거 이미지" loading="lazy">
             </div>
           </details>
 
           <details class="toggle">
             <summary class="toggle__head">비공개 톡방 내 기계 님 발언 (26.10.15. 추가)</summary>
             <div class="toggle__body">
-              <img src="images/35.jpg" alt="증거 이미지" loading="lazy">
-              <img src="images/36.jpg" alt="증거 이미지" loading="lazy">
-              <img src="images/37.jpg" alt="증거 이미지" loading="lazy">
+              <img width="1080" height="785" src="images/35.jpg" alt="증거 이미지" loading="lazy">
+              <img width="1080" height="293" src="images/36.jpg" alt="증거 이미지" loading="lazy">
+              <img width="1080" height="298" src="images/37.jpg" alt="증거 이미지" loading="lazy">
             </div>
           </details>
 
           <details class="toggle">
             <summary class="toggle__head">'훈련장' 톡방 스탭진 사과문 (26.09.08. 카톡방 캡처 추가)</summary>
             <div class="toggle__body">
-              <img src="images/29.jpg" alt="증거 이미지" loading="lazy">
-              <img src="images/30.jpg" alt="증거 이미지" loading="lazy">
-              <img src="images/31.jpg" alt="증거 이미지" loading="lazy">
+              <img width="1657" height="885" src="images/29.jpg" alt="증거 이미지" loading="lazy">
+              <img width="1576" height="800" src="images/30.jpg" alt="증거 이미지" loading="lazy">
+              <img width="1603" height="728" src="images/31.jpg" alt="증거 이미지" loading="lazy">
 
               <details class="toggle">
                 <summary class="toggle__head">기존 텍스트본</summary>
                 <div class="toggle__body">
-                  <img src="images/25.jpg" alt="증거 이미지" loading="lazy">
-                  <img src="images/26.jpg" alt="증거 이미지" loading="lazy">
-                  <img src="images/27.jpg" alt="증거 이미지" loading="lazy">
+                  <img width="821" height="921" src="images/25.jpg" alt="증거 이미지" loading="lazy">
+                  <img width="821" height="663" src="images/26.jpg" alt="증거 이미지" loading="lazy">
+                  <img width="821" height="663" src="images/27.jpg" alt="증거 이미지" loading="lazy">
                 </div>
               </details>
             </div>
@@ -615,7 +616,7 @@ img{ max-width:100%; height:auto; }
           <details class="toggle">
             <summary class="toggle__head">기계, 제퍼 댓글 폐쇄 요청</summary>
             <div class="toggle__body">
-              <img src="images/28.jpeg" alt="증거 이미지" loading="lazy">
+              <img width="1179" height="1009" src="images/28.jpeg" alt="증거 이미지" loading="lazy">
             </div>
           </details>
         </div>
@@ -633,10 +634,10 @@ img{ max-width:100%; height:auto; }
       <p class="small"><strong>※ 본 이미지는 2차 배포를 금지합니다.</strong> (공유·퍼가기가 가능한 이미지는 1. 타임라인의 이미지입니다.)</p>
       <div class="timeline">
         <div class="timeline__imgs">
-          <img src="images/a.png" alt="비공개 톡방 타임라인 1" loading="lazy">
-          <img src="images/b.png" alt="비공개 톡방 타임라인 2" loading="lazy">
-          <img src="images/c.png" alt="비공개 톡방 타임라인 3" loading="lazy">
-          <img src="images/d.png?v=1008" alt="비공개 톡방 타임라인 4" loading="lazy">
+          <img width="2250" height="9928" src="images/a.png" alt="비공개 톡방 타임라인 1" loading="lazy">
+          <img width="2250" height="7849" src="images/b.png" alt="비공개 톡방 타임라인 2" loading="lazy">
+          <img width="2250" height="6126" src="images/c.png" alt="비공개 톡방 타임라인 3" loading="lazy">
+          <img width="2250" height="7878" src="images/d.png?v=1008" alt="비공개 톡방 타임라인 4" loading="lazy">
         </div>
       </div>
     </section>
@@ -678,7 +679,7 @@ img{ max-width:100%; height:auto; }
       <h3>[쟁점 3] 특정 유저와 캐릭터의 관계, 그리고 ’특별 대우’에 관한 확인</h3>
       <p>2025년 당시 반박 측은 “앞으로 ○○○의 정실은 ○○○님입니다” 같은 선언은 단 한 번도 없었다고 밝혔습니다.</p>
       <p>그러나 여기서 묻는 것은 그런 문구가 있었느냐가 아니라, <strong>실제로 특정 유저들이 다르게 대우받았느냐</strong>입니다. 기계 님은 특정 대화방에서 <strong>플랫폼의 다른 유저들은 신경 쓰지 않으며, 그 방에 있는 사람들만 신경 쓰고 특별 대우한다</strong>고 말한 바 있습니다.</p>
-      <img src="images/23.png" alt="증거 이미지" loading="lazy" style="border-radius:8px; border:1px solid var(--hairline);">
+      <img width="1179" height="323" src="images/23.png" alt="증거 이미지" loading="lazy" style="border-radius:8px; border:1px solid var(--hairline);">
       <p>그것을 방 안의 모든 사람이 알고 있을 것이라고도 했고, 본인이 그 방에 <strong>많은 스포일러를 해 왔다</strong>는 점도 함께 밝혔습니다.</p>
       <p>이 발언은 정보 공유가 플레이 방법이나 유저노트 수준이었다는 25년의 설명, 모든 유저를 동등하게 대해 왔다는 설명과 맞지 않습니다.</p>
       <p>이 ’특별 대우’는 발언에만 그치지 않은 것으로 보입니다. 같은 공간의 대화에는 특정 유저와 캐릭터의 관계를 <strong>’정실’로 부르며 이를 인정하는 것으로 읽히는 부분</strong>이 있습니다.</p>
@@ -737,7 +738,7 @@ img{ max-width:100%; height:auto; }
       <details class="toggle">
         <summary class="toggle__head">일반 유저 뒷담화 자료</summary>
         <div class="toggle__body">
-          <img src="images/24.png" alt="증거 이미지" loading="lazy">
+          <img width="949" height="1800" src="images/24.png" alt="증거 이미지" loading="lazy">
         </div>
       </details>
 
@@ -763,11 +764,13 @@ img{ max-width:100%; height:auto; }
 
       <p style="margin-top:32px;">💡 <strong>(1) 쟁점별 공개 답변</strong> — 이 문서의 각 쟁점에 대해, 항목별로 공개된 블로그에서 답변해 주시기 바랍니다. 블로그에 답변 후 피드에도 해당 블로그 게시글을 추가로 달아주시기 바랍니다.</p>
       <p><strong>(2) 공동 작성 문서의 존재·범위 공개</strong> — 캐릭터 설정 관련 내부 문서가 존재했다면, 그 범위와 작성 기간을 공개해 주시기 바랍니다.</p>
+    </section>
 
-      <!-- ---------- 10월 25일 입장문 답변 대조 (26.10.26. 추가) ---------- -->
-      <h3 id="statement-1025" style="scroll-margin-top:88px;">10월 25일 입장문 답변 대조</h3>
-      <p>10월 25일 기계 님이 블로그에 게시한 입장문의 내용을, 위 쟁점별 요청 항목에 맞춰 정리했습니다. 입장문의 표현을 요약해 옮겼고, 답변 여부 외의 평가는 덧붙이지 않았습니다.</p>
-      <p>정리 내용 중 사실과 다른 부분이 있으면 <a href="#s4">4. 반론 및 정정 요청</a>으로 알려 주세요.</p>
+    <!-- ============ 4. 10월 25일 입장문 답변 대조 ============ -->
+    <section class="section" id="s4">
+      <h2 class="section__title">4. 10월 25일 입장문 답변 대조</h2>
+      <p>10월 25일 기계 님이 블로그에 게시한 입장문의 내용을, <a href="#s3">3. 쟁점 및 요구사항</a>의 쟁점별 요청 항목에 맞춰 정리했습니다. 입장문의 표현을 요약해 옮겼고, 답변 여부 외의 평가는 덧붙이지 않았습니다.</p>
+      <p>정리 내용 중 사실과 다른 부분이 있으면 <a href="#s5">5. 반론 및 정정 요청</a>으로 알려 주세요.</p>
       <div class="answer-sum">
         <p class="answer-sum__title">요청 항목 35개 중 답변 14, 부분 답변 11, 언급 없음 10</p>
         <div class="answer-bar" role="img" aria-label="답변 14, 부분 답변 11, 언급 없음 10"><span class="is-yes" style="width:40.00%"></span><span class="is-part" style="width:31.43%"></span><span class="is-none" style="width:28.57%"></span></div>
@@ -857,7 +860,7 @@ img{ max-width:100%; height:auto; }
           <table class="atable">
             <thead><tr><th>요청 항목</th><th>입장문 내용</th><th>답변 여부</th></tr></thead>
             <tbody>
-              <tr><td>일반 유저 대상 발언 사실</td><td>블랙필드 운영 당시 부적절한 발언을 인정하고 사과. 고래 님을 낮춰 표현한 발언도 인정. 다만 증거 자료의 ‘블랙필드(톡방) 유저 언급’ 이미지 중 맨 아래 캡처(‘유도’, ‘지가’ 부분)는 고래 님이 아닌 다른 날 다른 사람에 대한 대화라고 반론</td><td><span class="chip chip--yes">답변</span></td></tr>
+              <tr><td>일반 유저 대상 발언 사실</td><td>블랙필드 운영 당시 부적절한 발언을 인정하고 사과. 증거 자료 ‘블랙필드(톡방) 유저 언급’ 이미지 속 피해자를 낮춰 표현한 발언도 인정. 다만 같은 이미지 맨 아래 캡처(‘유도’, ‘지가’ 부분)는 해당 피해자가 아닌 다른 날 다른 사람에 대한 대화라고 반론</td><td><span class="chip chip--yes">답변</span></td></tr>
               <tr><td>평가·조롱을 말렸는지, 주도했는지</td><td>스탭방 요약만 듣고 판단했고 도움을 준 쪽으로 편향됐다고 사과. 주도 여부는 직접 언급 없음</td><td><span class="chip chip--part">부분 답변</span></td></tr>
               <tr><td>‘찐빠’ 분위기</td><td>이미 알려 준 설정을 모르는 유저에게 성급하게 굴었다고 사과. ‘찐빠’ 표현은 언급 없음</td><td><span class="chip chip--part">부분 답변</span></td></tr>
               <tr><td>25년에 ‘구석기’ 표현만 다룬 이유</td><td>첫 입장문은 사실관계 설명에 급급했다며 다시 사과</td><td><span class="chip chip--part">부분 답변</span></td></tr>
@@ -882,9 +885,9 @@ img{ max-width:100%; height:auto; }
       <p class="answer-foot">※ 10.15·10.21에 추가한 증거 자료(‘연애, 리셋’ 등장인물 직업 추천, 비공개 톡방 내 기계 님 발언, ‘영동단’ 명단)는 입장문에서 언급되지 않았습니다.</p>
     </section>
 
-    <!-- ============ 4. 반론 및 정정 요청 ============ -->
-    <section class="section" id="s4">
-      <h2 class="section__title">4. 반론 및 정정 요청</h2>
+    <!-- ============ 5. 반론 및 정정 요청 ============ -->
+    <section class="section" id="s5">
+      <h2 class="section__title">5. 반론 및 정정 요청</h2>
       <p>📌 <strong>이 문서는 정정 요청을 받습니다.</strong> 기재된 내용 중 사실과 다른 부분이 있다면 정정을 요청해 주시기 바랍니다. 근거와 함께 접수된 요청은 검토 후 반영하며, 반영 결과는 아래에 공개적으로 기록합니다. 당사자 본인의 반론은 원문 그대로 게재합니다.</p>
       <h3>정정 요청 방법</h3>
       <a class="btn" target="_blank" rel="noopener" href="https://forms.gle/bP3VUti4vgptR7Y27">정정 요청하기 (구글폼)</a>
@@ -896,9 +899,9 @@ img{ max-width:100%; height:auto; }
       </ul>
     </section>
 
-    <!-- ============ 5. 제보하기 ============ -->
-    <section class="section" id="s5">
-      <h2 class="section__title">5. 제보하기</h2>
+    <!-- ============ 6. 제보하기 ============ -->
+    <section class="section" id="s6">
+      <h2 class="section__title">6. 제보하기</h2>
       <p>🔒 <strong>제보자 보호</strong> — 원치 않으시면 문서에 싣지 않고 참고용으로만 확인합니다. 공개 범위는 제보자가 직접 선택하며, 제보자의 신원은 어떤 경우에도 공개하지 않습니다.</p>
       <a class="btn" target="_blank" rel="noopener" href="https://forms.gle/TLRZuGt9edu3QiYp6">제보하기 (구글 폼)</a>
 
@@ -921,16 +924,16 @@ img{ max-width:100%; height:auto; }
       </ol>
     </section>
 
-    <!-- ============ 6. 민원 제기 방법 ============ -->
-    <section class="section" id="s6">
-      <h2 class="section__title">6. 민원 제기 방법: 공정위, 소보원, 한국콘텐츠진흥원</h2>
+    <!-- ============ 7. 민원 제기 방법 ============ -->
+    <section class="section" id="s7">
+      <h2 class="section__title">7. 민원 제기 방법: 공정위, 소보원, 한국콘텐츠진흥원</h2>
       <p>현재 다수의 유저분들이 ‘공정거래위원회’, ‘한국소비자보호원’, ‘한국콘텐츠진흥원’ 등에 신고를 접수하고 있습니다. 신고 방법과 예시는 하단 링크에 정리되어 있으니 참고 부탁드립니다.</p>
       <a class="btn" target="_blank" rel="noopener" href="https://sumptuous-catcher-d88.notion.site/3c3c71d527ad80c69b86e2cfc01c342d">신고 방법·예시 보기</a>
     </section>
 
-    <!-- ============ 7. 깃허브 차단 발생 시 대피 공간 ============ -->
-    <section class="section" id="s7">
-      <h2 class="section__title">7. 깃허브 차단 발생 시 대피 공간</h2>
+    <!-- ============ 8. 깃허브 차단 발생 시 대피 공간 ============ -->
+    <section class="section" id="s8">
+      <h2 class="section__title">8. 깃허브 차단 발생 시 대피 공간</h2>
       <p>지속적인 신고와 크랙의 비협조적인 행위로 소통 창구들이 계속 닫히는 상황이 발생합니다. 만약 깃허브 페이지까지 차단이 될 시에 다음 대피 공간인 오픈채팅으로 모여주세요.</p>
 
       <p><strong>(1) 오픈채팅</strong>&nbsp; <a class="linklike" target="_blank" rel="noopener" href="https://open.kakao.com/o/gaiEFDLi">https://open.kakao.com/o/gaiEFDLi</a></p>
@@ -940,18 +943,18 @@ img{ max-width:100%; height:auto; }
       <p class="small">※ 현재는 읽기만 가능합니다.</p>
     </section>
 
-    <!-- ============ 8. 마지막으로 ============ -->
-    <section class="section" id="s8">
-      <h2 class="section__title">8. 마지막으로</h2>
+    <!-- ============ 9. 마지막으로 ============ -->
+    <section class="section" id="s9">
+      <h2 class="section__title">9. 마지막으로</h2>
       <p>이 문서에 실린 내용은 여러 경로로 겹쳐 들어온 제보를 우선해 담았습니다. 서로 다른 분들이 같은 내용을 알려 주신 경우를 기준으로 삼았고, 그 기준에 닿지 못해 싣지 못한 제보도 많습니다. 보내 주신 내용은 버리지 않고 참고 자료로 보관하고 있으며, 이후 확인이 되는 대로 반영하겠습니다.</p>
       <p>용기 내어 접수해 주신 모든 분들께 감사드립니다.</p>
     </section>
 
-    <!-- ============ 9. 변경 이력 ============ -->
-    <section class="section" id="s9">
-      <h2 class="section__title">9. 변경 이력</h2>
+    <!-- ============ 10. 변경 이력 ============ -->
+    <section class="section" id="s10">
+      <h2 class="section__title">10. 변경 이력</h2>
       <ul class="small">
-        <li>26.10.27. (1) 타임라인 7번 이미지에 10월 25일 입장문 게시 내용을 추가하고, 타임라인 zip 파일을 최신본으로 교체했습니다. (2) '3. 쟁점 및 요구사항'에 '10월 25일 입장문 답변 대조'를 추가했습니다. (3) '0. 1분 요약'의 일부 문장을 입장문 게시에 맞춰 수정했습니다. (4) 증거 자료의 '블랙필드(톡방) 유저 언급' 이미지 아래에 입장문의 관련 주장을 덧붙였습니다.</li>
+        <li>26.10.27. (1) 타임라인 7번 이미지에 10월 25일 입장문 게시 내용을 추가하고, 타임라인 zip 파일을 최신본으로 교체했습니다. (2) '4. 10월 25일 입장문 답변 대조' 항목을 새로 추가했습니다. 이에 따라 기존 4번(반론 및 정정 요청)부터 항목 번호가 하나씩 뒤로 밀렸습니다. (3) '0. 1분 요약'의 일부 문장을 입장문 게시에 맞춰 수정했습니다. (4) 증거 자료의 '블랙필드(톡방) 유저 언급' 이미지 아래에 입장문의 관련 주장을 덧붙였습니다.</li>
         <li>26.10.21. 추가 증거 자료에 '비공개 톡방 내 '영동단' 명단 공지' 자료를 추가했습니다.</li>
         <li>26.10.15. 추가 증거 자료에 '연애, 리셋 친목 유저들과 함께 제작한 정황 근거', '비공개 톡방 내 기계 님 발언' 자료를 추가했습니다.</li>
         <li>26.10.08. ‘2. 비공개 톡방 타임라인’ 항목을 새로 추가했습니다(이미지 일부 수정). 이에 따라 기존 2번(쟁점 및 요구사항)부터 항목 번호가 하나씩 뒤로 밀렸습니다.</li>
@@ -983,12 +986,13 @@ img{ max-width:100%; height:auto; }
       <li><a class="toc__link" href="#s1"><span class="toc__num">01</span>타임라인</a></li>
       <li><a class="toc__link" href="#s2"><span class="toc__num">02</span>비공개 톡방 타임라인</a></li>
       <li><a class="toc__link" href="#s3"><span class="toc__num">03</span>쟁점 및 요구사항</a></li>
-      <li><a class="toc__link" href="#s4"><span class="toc__num">04</span>반론 및 정정 요청</a></li>
-      <li><a class="toc__link" href="#s5"><span class="toc__num">05</span>제보하기</a></li>
-      <li><a class="toc__link" href="#s6"><span class="toc__num">06</span>민원 제기 방법</a></li>
-      <li><a class="toc__link" href="#s7"><span class="toc__num">07</span>대피 공간</a></li>
-      <li><a class="toc__link" href="#s8"><span class="toc__num">08</span>마지막으로</a></li>
-      <li><a class="toc__link" href="#s9"><span class="toc__num">09</span>변경 이력</a></li>
+      <li><a class="toc__link" href="#s4"><span class="toc__num">04</span>입장문 답변 대조</a></li>
+      <li><a class="toc__link" href="#s5"><span class="toc__num">05</span>반론 및 정정 요청</a></li>
+      <li><a class="toc__link" href="#s6"><span class="toc__num">06</span>제보하기</a></li>
+      <li><a class="toc__link" href="#s7"><span class="toc__num">07</span>민원 제기 방법</a></li>
+      <li><a class="toc__link" href="#s8"><span class="toc__num">08</span>대피 공간</a></li>
+      <li><a class="toc__link" href="#s9"><span class="toc__num">09</span>마지막으로</a></li>
+      <li><a class="toc__link" href="#s10"><span class="toc__num">10</span>변경 이력</a></li>
     </ul>
   </div>
 </div>
