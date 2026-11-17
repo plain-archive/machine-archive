@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>커뮤니티 — 크랙 제작자 '기계' 공론화</title>
 <meta name="description" content="공론화 관련 이야기를 나누는 커뮤니티 게시판 안내입니다.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="커뮤니티 — 크랙 제작자 '기계' 공론화">
+<meta property="og:description" content="공론화 관련 이야기를 나누는 커뮤니티 게시판 안내입니다.">
+<meta property="og:url" content="https://plain-archive.github.io/machine-archive/community.html">
+<meta name="twitter:card" content="summary">
+<!-- 탭 아이콘 : 강조색 네모 (이미지 파일 없이 여기 한 줄로 그립니다. 바꾸려면 이 줄만 바꾸면 됩니다) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239b2929'/%3E%3C/svg%3E">
 
 <link rel="stylesheet" as="style" crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -34,9 +42,15 @@ a{ color:var(--link); text-decoration:none; }
   border-bottom:1px solid var(--hairline); padding-top:env(safe-area-inset-top,0px);
 }
 .topbar__inner{
-  max-width:1080px; margin:0 auto; height:60px; padding:0 24px;
-  display:flex; align-items:center; justify-content:flex-end; gap:32px;
+  max-width:760px; margin:0 auto; height:60px; padding:0 20px;   /* 공론화 홈과 같은 폭 */
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
+.topbar__title{
+  min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-size:16px; font-weight:700; color:var(--text); letter-spacing:-0.02em;
+}
+.topbar__title:hover{ text-decoration:none; color:var(--accent); }
+.topnav{ flex:none; }
 .topnav{ position:relative; display:flex; align-items:center; gap:32px; }
 .topnav__link{ position:relative; color:var(--text); font-weight:700; font-size:16px; }
 .topnav__link:hover{ text-decoration:none; color:var(--accent); }
@@ -59,14 +73,14 @@ a{ color:var(--link); text-decoration:none; }
 .dropdown__menu::before{ content:""; position:absolute; top:-14px; left:0; right:0; height:14px; }
 .dropdown__link{
   display:flex; align-items:center; gap:12px; padding:11px 12px; border-radius:9px;
-  color:var(--text); font-size:15px; font-weight:600;
+  color:var(--text); font-size:15px; font-weight:400;
 }
 .dropdown__link:hover{ background:#f2f1ef; text-decoration:none; }
 .dropdown__ico{ font-size:17px; width:22px; text-align:center; }
 
 /* ===== 본문 ===== */
-.wrap{ max-width:880px; margin:0 auto; padding:64px 24px 96px; }
-.page-title{ font-size:36px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px; }
+.wrap{ max-width:760px; margin:0 auto; padding:64px 20px 96px; }   /* 공론화 홈 본문과 같은 폭(720px) */
+.page-title{ font-size:36px; font-weight:700; letter-spacing:-0.02em; margin:0 0 12px; }
 .page-desc{ color:var(--muted); font-size:16px; margin:0 0 8px; }
 .page-note{ color:var(--muted); font-size:14px; margin:0 0 40px; }
 
@@ -74,19 +88,16 @@ a{ color:var(--link); text-decoration:none; }
 .grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .card{
   display:flex; gap:16px; align-items:flex-start;
-  background:#fff; border:1px solid var(--hairline); border-radius:14px;
-  padding:22px 24px; transition:border-color .15s, box-shadow .15s, transform .15s;
+  background:#f1efe8; border-radius:12px;   /* 디자인 기준 : 박스는 면 색만(외곽선 없음), 공론화 홈의 카드와 같은 색 */
+  padding:20px 22px; transition:background .15s;
 }
-.card:hover{
-  text-decoration:none; border-color:#cfcfca;
-  box-shadow:0 8px 22px rgba(0,0,0,.06); transform:translateY(-2px);
-}
-.card--wide{ grid-column:1 / -1; background:#f1efe8; border-color:#bcbbb5; }
+.card:hover{ text-decoration:none; background:#eae7de; }
+.card--wide{ grid-column:1 / -1; }
 .card__ico{ font-size:26px; line-height:1.2; flex:none; }
 .card__body{ display:flex; flex-direction:column; align-items:flex-start; min-width:0; }
-.card__title{ font-size:17px; font-weight:800; color:var(--text); margin:0 0 4px; }
+.card__title{ font-size:17px; font-weight:700; color:var(--text); margin:0 0 4px; }
 .card__desc{ font-size:14px; color:var(--muted); margin:0; line-height:1.6; }
-.card__go{ font-size:13px; color:var(--link); font-weight:600; margin-top:8px; display:inline-block; }
+.card__go{ font-size:13px; color:var(--link); font-weight:700; margin-top:8px; display:inline-block; }
 
 .foot{ margin-top:48px; font-size:13px; color:var(--muted); line-height:1.7; }
 
@@ -94,7 +105,9 @@ a{ color:var(--link); text-decoration:none; }
   .wrap{ padding:40px 20px 72px; }
   .page-title{ font-size:28px; }
   .grid{ grid-template-columns:1fr; }
-  .topbar__inner{ padding:0 18px; gap:22px; }
+  .topbar__inner{ gap:16px; }
+  .topnav{ gap:22px; }
+  .topbar__title{ font-size:15px; }
 }
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
 </style>
@@ -105,6 +118,7 @@ a{ color:var(--link); text-decoration:none; }
 <!-- 상단 헤더 -->
 <header class="topbar">
   <div class="topbar__inner">
+    <a class="topbar__title" href="index.html">크랙 제작자 ‘기계’ 공론화</a>
     <nav class="topnav">
       <a class="topnav__link" href="index.html">공론화 홈</a>
       <div class="dropdown">

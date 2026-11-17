@@ -7,6 +7,14 @@
 
 <title>크랙 제작자 '기계' 공론화</title>
 <meta name="description" content="AI 채팅 플랫폼 '크랙' 크리에이터 '기계' 관련 사실관계 확인 및 공개 해명 요청 문서입니다.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="크랙 제작자 '기계' 공론화">
+<meta property="og:description" content="AI 채팅 플랫폼 '크랙' 크리에이터 '기계' 관련 사실관계 확인 및 공개 해명 요청 문서입니다.">
+<meta property="og:url" content="https://plain-archive.github.io/machine-archive/">
+<meta name="twitter:card" content="summary">
+<!-- 탭 아이콘 : 강조색 네모 (이미지 파일 없이 여기 한 줄로 그립니다. 바꾸려면 이 줄만 바꾸면 됩니다) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%239b2929'/%3E%3C/svg%3E">
 
 <!-- 검색엔진 노출 제어: 검색에 안 뜨게 하려면 아래 줄의 주석을 풀어주세요.
 <meta name="robots" content="noindex, nofollow">
@@ -56,7 +64,7 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:var(--font);
-  font-size:16px;
+  font-size:17px;        /* 본문 글자 (11/17: 16 → 17px, 한 줄 약 42자) */
   line-height:1.75;
   letter-spacing:-0.01em;
   word-break:keep-all;   /* 한글 줄바꿈: 단어 단위로 끊기 */
@@ -80,10 +88,17 @@ img{ max-width:100%; height:auto; }
   padding-top: env(safe-area-inset-top, 0px);
 }
 .topbar__inner{
-  max-width:1080px; margin:0 auto;
-  height:60px; padding:0 24px;
-  display:flex; align-items:center; justify-content:flex-end; gap:32px;
+  max-width:calc(var(--content-w) + 40px); margin:0 auto;   /* 본문과 같은 폭 */
+  height:60px; padding:0 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
+/* 헤더 왼쪽 : 문서 제목 (어느 탭에서도 무슨 문서인지 보이게) */
+.topbar__title{
+  min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-size:16px; font-weight:700; color:var(--text); letter-spacing:-0.02em;
+}
+.topbar__title:hover{ text-decoration:none; color:var(--accent); }
+.topnav{ flex:none; }
 .topnav{ position:relative; display:flex; align-items:center; gap:32px; }
 .topnav__item{
   display:inline-flex; align-items:center; gap:6px;
@@ -124,7 +139,7 @@ img{ max-width:100%; height:auto; }
 .dropdown__link{
   display:flex; align-items:center; gap:12px;
   padding:11px 12px; border-radius:9px;
-  color:var(--text); font-size:15px; font-weight:600;
+  color:var(--text); font-size:15px; font-weight:400;
 }
 .dropdown__link:hover{ background:#f2f1ef; text-decoration:none; }
 .dropdown__ico{ font-size:17px; width:22px; text-align:center; }
@@ -140,7 +155,7 @@ img{ max-width:100%; height:auto; }
 .content{ max-width:var(--content-w); padding:var(--s8) 0 var(--s10); }
 
 /* 문서 헤더 */
-.doc-title{ font-size:36px; font-weight:800; line-height:1.25; margin:0 0 14px; letter-spacing:-0.02em; }
+.doc-title{ font-size:36px; font-weight:700; line-height:1.25; margin:0 0 14px; letter-spacing:-0.02em; }
 .doc-meta{ color:var(--muted); font-size:14px; margin:0 0 var(--s4); }
 .doc-meta::before{ content:"📍 "; }
 .doc-meta__sep{ margin:0 6px; }
@@ -148,14 +163,14 @@ img{ max-width:100%; height:auto; }
 /* 섹션 */
 .section{ margin-top:var(--s10); }   /* 앵커 이동 시 상단 여백은 html의 scroll-padding-top(96px)이 담당 */
 .section__title{
-  font-size:24px; font-weight:800; margin:0 0 var(--s3);
+  font-size:24px; font-weight:700; margin:0 0 var(--s3);
   padding-bottom:4px; border-bottom:2px solid var(--text); letter-spacing:-0.02em;
 }
-.section p{ margin:0 0 var(--s2); }
+.section p{ margin:0 0 var(--s3); }      /* 문단 사이 24px (11/17: 16 → 24px) */
 .section h3 .h3label{ font-size:22px; }
-.section h3{ font-size:18px; font-weight:800; margin:var(--s5) 0 var(--s2); }
-.section h4{ font-size:16px; font-weight:800; margin:var(--s4) 0 var(--s1); }
-.section ol, .section ul{ margin:0 0 var(--s2); padding-left:1.3em; }
+.section h3{ font-size:18px; font-weight:700; margin:var(--s5) 0 var(--s2); }
+.section h4{ font-size:1em; font-weight:700; margin:var(--s4) 0 var(--s1); }
+.section ol, .section ul{ margin:0 0 var(--s3); padding-left:1.3em; }
 .section li{ margin:6px 0; }
 .small{ font-size:14px; color:var(--muted); }
 
@@ -171,7 +186,7 @@ img{ max-width:100%; height:auto; }
 .callout p:last-child{ margin-bottom:0; }
 
 /* 요약(1분 요약) 강조 문단 */
-.lead{ font-size:16px; }
+.lead{ font-size:1em; }
 
 /* 링크 버튼 : 연한 베이지 면 + 회색 외곽선 */
 .btn, .btn--line{
@@ -200,7 +215,7 @@ img{ max-width:100%; height:auto; }
   margin:0; padding:0; vertical-align:bottom;
 }
 .timeline__note{
-  font-size:13px; color:var(--muted); line-height:1.7;
+  font-size:14px; color:var(--muted); line-height:1.7;
   margin-top:var(--s3);
 }
 .timeline__dl{ display:inline-block; margin-top:12px; font-size:14px; }
@@ -226,8 +241,8 @@ img{ max-width:100%; height:auto; }
 .toggle__body > *:first-child{ margin-top:0; }
 .toggle__body img, .evimg img{ border-radius:8px; margin:10px 0; border:1px solid var(--hairline); }
 .toggle .toggle{ background:#fcfcfb; }        /* 중첩 토글 */
-.evi-date{ font-weight:800; margin:var(--s4) 0 6px; }
-.cap{ font-size:13px; color:var(--muted); margin:4px 0 var(--s3); }
+.evi-date{ font-weight:700; margin:var(--s4) 0 6px; }
+.cap{ font-size:14px; color:var(--muted); margin:4px 0 var(--s3); }
 
 /* 자리 안내(placeholder) — 실제 증거 넣으면 지워질 자리 */
 .placeholder{
@@ -269,10 +284,12 @@ img{ max-width:100%; height:auto; }
   .content{ padding-top:var(--s6); }
   .doc-title{ font-size:28px; }
   .section__title{ font-size:21px; }
-  .topbar__inner{ padding:0 18px; gap:22px; }
+  .topbar__inner{ gap:16px; }
+  .topnav{ gap:22px; }
+  .topbar__title{ font-size:15px; }
 }
 @media (max-width:480px){
-  body{ font-size:15px; }
+  body{ font-size:16px; }   /* 좁은 휴대폰 (11/17: 15 → 16px) */
   .doc-title{ font-size:24px; }
   .btn{ width:100%; justify-content:center; }
 }
@@ -281,9 +298,9 @@ img{ max-width:100%; height:auto; }
    7) 입장문 답변 대조 (요약 막대 + 쟁점별 표 + 답변 여부 칩)
    ============================================================ */
 .answer-sum{ margin:var(--s3) 0 var(--s1); }
-.answer-sum__title{ font-weight:800; margin:0 0 10px !important; }
-.answer-bar{ display:flex; height:10px; border-radius:6px; overflow:hidden; background:var(--hairline); }
-.answer-bar span{ display:block; height:100%; }
+.answer-sum__title{ font-weight:700; margin:0 0 10px !important; }
+.answer-bar{ display:flex; gap:2px; height:16px; }   /* 숫자판 막대(.sbar--lg)와 같은 모양 */
+.answer-bar span{ display:block; height:100%; border-radius:4px; min-width:6px; }
 .answer-bar .is-yes{ background:#3f3f3f; }
 .answer-bar .is-part{ background:#bcbbb5; }
 .answer-bar .is-none{ background:var(--accent); }
@@ -293,11 +310,11 @@ img{ max-width:100%; height:auto; }
 .answer-legend .is-yes{ background:#3f3f3f; }
 .answer-legend .is-part{ background:#bcbbb5; }
 .answer-legend .is-none{ background:var(--accent); }
-.answer-criteria{ font-size:13px; color:var(--muted); line-height:1.7; margin:var(--s2) 0 var(--s3) !important; }
+.answer-criteria{ font-size:14px; color:var(--muted); line-height:1.7; margin:var(--s2) 0 var(--s3) !important; }
 .toggle > summary .toggle__title{ flex:1 1 0; min-width:0; }
-.toggle > summary .toggle__count{ margin-left:auto; padding-left:12px; font-size:13px; font-weight:600; color:var(--muted); white-space:nowrap; }
+.toggle > summary .toggle__count{ margin-left:auto; padding-left:12px; font-size:13px; font-weight:400; color:var(--muted); white-space:nowrap; }
 .atable{ width:100%; border-collapse:collapse; font-size:14px; line-height:1.6; }
-.atable th{ text-align:left; font-size:13px; color:var(--muted); font-weight:600; padding:10px 8px; border-bottom:1px solid var(--line); }
+.atable th{ text-align:left; font-size:13px; color:var(--muted); font-weight:400; padding:10px 8px; border-bottom:1px solid var(--line); }
 .atable td{ padding:12px 8px; border-bottom:1px solid var(--hairline); vertical-align:top; }
 .atable tr:last-child td{ border-bottom:none; }
 .atable td:first-child{ font-weight:700; width:30%; }
@@ -308,7 +325,7 @@ img{ max-width:100%; height:auto; }
 .chip--yes{ background:#e8e8e8; color:#1a1a1a; }
 .chip--part{ background:#f1efe8; color:#3f3f3f; border-color:#bcbbb5; }
 .chip--none{ background:var(--accent-bg); color:var(--accent); border-color:var(--accent-line); }
-.answer-foot{ font-size:13px; color:var(--muted); margin-top:var(--s2) !important; }
+.answer-foot{ font-size:14px; color:var(--muted); margin-top:var(--s2) !important; }
 @media (max-width:600px){
   .toggle > summary{ flex-wrap:wrap; }
   .toggle > summary .toggle__count{ flex-basis:100%; margin-left:23px; padding-left:0; }
@@ -337,7 +354,7 @@ img{ max-width:100%; height:auto; }
 .qitem{ padding:var(--s3) 0 var(--s2); border-top:1px solid var(--hairline); }
 .toggle__body > .qitem:first-child{ border-top:none; padding-top:var(--s1); }
 .section .qitem p{ margin:0 0 12px; }
-.section .qitem p.small{ font-size:13px; margin:8px 0 0; }
+.section .qitem p.small{ font-size:14px; margin:8px 0 0; }
 .qask{ font-weight:700; }
 
 /* ============================================================
@@ -367,6 +384,13 @@ img{ max-width:100%; height:auto; }
   background:#fff; color:var(--text); font:700 18px/1 var(--font); cursor:pointer;
 }
 .imgview__close:focus-visible{ outline:3px solid var(--link); outline-offset:2px; }
+/* 2차 배포를 금지한 이미지(비공개 톡방 타임라인)를 크게 볼 때 왼쪽 위에 작게 보이는 한 줄 */
+.imgview__note{
+  position:fixed; top:calc(19px + env(safe-area-inset-top)); left:calc(12px + env(safe-area-inset-left));
+  max-width:calc(100% - 84px); margin:0; padding:4px 10px; border-radius:999px;
+  background:rgba(0,0,0,.65); color:#f2f2f2; font-size:12px; line-height:1.5; pointer-events:none;
+}
+.imgview__note[hidden]{ display:none; }
 .imgview__hint{
   position:fixed; left:50%; bottom:calc(12px + env(safe-area-inset-bottom)); transform:translateX(-50%);
   margin:0; padding:6px 14px; border-radius:999px; white-space:nowrap;
@@ -394,10 +418,19 @@ img{ max-width:100%; height:auto; }
   background:var(--bg); border-bottom:1px solid var(--hairline);
 }
 .tabs__inner{
-  max-width:960px; margin:0 auto; padding:0 16px;
+  max-width:calc(var(--content-w) + 40px); margin:0 auto; padding:0 8px;   /* 탭 글자가 본문 왼쪽 선에서 시작 */
   display:flex; gap:4px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
 }
 .tabs__inner::-webkit-scrollbar{ display:none; }
+/* 탭이 화면보다 길 때 : 가려진 쪽 끝을 흐리게 하고 화살표를 보인다 (스크립트가 is-more·is-less를 붙인다) */
+.tabs::before, .tabs::after{
+  position:absolute; top:0; bottom:0; width:44px; pointer-events:none;
+  display:flex; align-items:center; font-size:20px; line-height:1; color:var(--muted);
+  opacity:0; transition:opacity .15s;
+}
+.tabs::after{ content:"›"; right:0; justify-content:flex-end; padding-right:8px; background:linear-gradient(to right, rgba(247,247,246,0), var(--bg) 60%); }
+.tabs::before{ content:"‹"; left:0; justify-content:flex-start; padding-left:8px; background:linear-gradient(to left, rgba(247,247,246,0), var(--bg) 60%); }
+.tabs.is-more::after, .tabs.is-less::before{ opacity:1; }
 .tabs__link{
   flex:none; font-size:15px; font-weight:400; line-height:1; color:var(--muted); white-space:nowrap;
   border-bottom:3px solid transparent; padding:16px 12px 13px;
@@ -418,6 +451,8 @@ html:not(.js) .jsonly{ display:none; }
 .js .tabpanel .section{ margin-top:0; }
 .js .tabpanel > .section + .section{ margin-top:72px; }
 .js .tabpanel .section__title{ margin-top:0; }
+#s0 > h2.blk{ margin-top:32px; }            /* 제목 바로 아래에 오는 1분 요약 */
+#tab-home > .callout{ margin-top:40px; }    /* 1분 요약 다음에 오는 안내 박스 */
 
 /* 작은 제목(밑줄 없는 제목) */
 h2.blk{ font-size:20px; font-weight:700; margin:56px 0 16px; letter-spacing:-0.02em; }
@@ -435,7 +470,7 @@ h2.blk{ font-size:20px; font-weight:700; margin:56px 0 16px; letter-spacing:-0.0
 
 /* ---- 한눈에 : 요약 상자, 접어 둔 글 ---- */
 .lead-box{ background:var(--imp); border-radius:14px; padding:20px 24px; }
-.section .lead-box p{ margin:0; font-size:16px; color:#4d4d4d; }
+.section .lead-box p{ margin:0; font-size:1em; color:#4d4d4d; }
 .lead-box strong{ color:var(--accent); }
 .more{ margin:12px 0 0; }
 .more > summary{ cursor:pointer; font-weight:700; font-size:15px; color:var(--box-t); padding:8px 0; list-style:none; }
@@ -485,6 +520,7 @@ h2.blk{ font-size:20px; font-weight:700; margin:56px 0 16px; letter-spacing:-0.0
 .card > summary::-webkit-details-marker{ display:none; }
 .card > summary::before, a.card::before{ content:"▶"; position:absolute; left:20px; top:19px; font-size:12px; color:var(--muted); }
 .card[open] > summary::before{ transform:rotate(90deg); }
+a.card::before{ content:"→"; font-size:14px; top:17px; }   /* 펼치는 카드(▶)와 달리 다른 자리로 이동하는 카드 */
 a.card:hover{ text-decoration:none; background:#eae7de; }
 .card__label{ font-size:13px; font-weight:700; color:var(--box-t); }
 .card__label--diff{ color:var(--accent); }
@@ -494,6 +530,9 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
 .card__body{ background:#fbfbfa; margin:0 6px 6px; border-radius:8px; padding:20px 22px; }
 .card__body > *:first-child{ margin-top:0; }
 .card__body .qitem{ border:none; padding:0; }
+/* 증거 이미지는 카드 안쪽 여백 없이 카드 폭(본문 칸 폭)을 꽉 채운다 */
+.card__body .evimg{ margin:16px -28px; }
+.card__body .evimg img{ display:block; width:100%; margin:0; border-left:none; border-right:none; border-radius:0; }
 .card--q > summary{ padding-top:13px; padding-bottom:13px; }
 .card--q > summary::before{ top:16px; }
 .section .card--q .card__title{ font-size:15px; }
@@ -527,8 +566,9 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
 .file__img{ height:150px; overflow:hidden; background:#fff; }
 .content .file__img img{ display:block; width:100%; height:150px; object-fit:cover; object-position:top; margin:0; border:none; border-radius:0; }
 .file figcaption{ padding:8px 10px 10px; display:flex; flex-direction:column; gap:2px; font-size:12px; line-height:1.45; color:var(--box-p); }
-.file figcaption b{ font-size:14px; font-weight:700; color:var(--text); }
-.file figcaption a{ color:inherit; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.file figcaption b{ font-size:18px; line-height:1.3; font-weight:700; color:var(--text); letter-spacing:-0.02em; }
+.file__note{ font-size:11px; color:var(--accent); }   /* 증거 목록 칸의 '2차 배포 금지' 작은 표시 */
+.file figcaption a{ color:inherit; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 
 /* ---- 변경 이력 : 날짜 카드 ---- */
 .section .log{ list-style:none; margin:0; padding:0; }
@@ -557,8 +597,10 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
   .card > summary, a.card{ padding-left:38px; padding-right:16px; }
   .card > summary::before, a.card::before{ left:16px; }
   .card__body{ padding:16px; }
+  .card__body .evimg{ margin:14px -22px; }
   .more__body{ padding:16px; }
   .section .log li{ grid-template-columns:1fr; gap:2px; }
+  .totop{ right:12px; bottom:calc(12px + env(safe-area-inset-bottom,0px)); width:40px; height:40px; background:rgba(255,255,255,.78); border-color:var(--hairline); box-shadow:none; }
 }
 @media (max-width:600px){ .gtable td:last-child{ order:0; } }
 
@@ -577,6 +619,7 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
 <!-- ===================== 상단 헤더 ===================== -->
 <header class="topbar">
   <div class="topbar__inner">
+    <a class="topbar__title" href="#top">크랙 제작자 ‘기계’ 공론화</a>
     <nav class="topnav">
       <a class="topnav__link is-active" href="#top">공론화 홈</a>
 
@@ -632,21 +675,6 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
     <h1 class="doc-title">크랙 제작자 ‘기계’ 공론화</h1>
     <p class="doc-meta">최종 수정 : 2026.11.16. <span class="doc-meta__sep">·</span> <a class="linklike" href="#update-1025">새 내용 추가: 10월 25일 입장문 이후 추가 증거</a></p>
 
-    <!-- 상단 안내 -->
-    <div class="callout callout--gray">
-      <p>해당 공론화의 논점입니다. 제작자인 ‘기계’ 님이 ‘<strong>유료 서비스</strong>’이면서, 일반 유저에겐 ‘<strong>캐릭터 공략 불가</strong>’, ‘<strong>유저 뒷담</strong>’을 했으며, ‘기계’ 님이 초기에 만든 단톡방에서부터 이어진 친목 유저에겐 같은 ‘<strong>공략 불가 캐릭터들’을 ‘정실’로 인정</strong>해 준 것.</p>
-      <ol>
-        <li>공략 불가인데, 정실이 존재한 점</li>
-        <li>유저 뒷담화</li>
-        <li>공식 설정 및 전개를 일부 유저와 사적인 공간에서 먼저 제작되고 공유된 점</li>
-        <li>포타에 연재되는 소설은 세계관 분리라고 했지만, 실제로 연재된 소설은 똑같은 설정의 캐릭터가 ‘유사 사랑’을 하고 있는 점</li>
-      </ol>
-      <p class="small"><strong>※ 크랙 측에서 공론화 계정을 계속해서 계정 정지하고 있습니다.</strong> 만약 깃허브조차 신고가 되어 사라진다면, 하기 오픈채팅으로 모여주세요. 북마크 부탁드립니다.</p>
-      <p class="small">비상시 오픈채팅 링크: <a class="linklike" target="_blank" rel="noopener" href="https://open.kakao.com/o/gaiEFDLi">https://open.kakao.com/o/gaiEFDLi</a></p>
-      <p class="small">※ 해당 문서에서 정정사항이 있으면 <a href="#s5">6. 반론 및 정정 요청</a>을 확인하여 주세요.</p>
-      <p style="margin-top:16px; margin-bottom:0;"><a class="linklike" target="_blank" rel="noopener" href="https://github.com/plain-archive/machine-archive/blob/main/GUIDE.md">📖 깃허브가 처음이신가요? 이용 안내 보기</a></p>
-    </div>
-
     <!-- ============ 0. 1분 요약 ============ -->
     <section class="section" id="s0">
       <h2 class="blk">0. 1분 요약</h2>
@@ -666,6 +694,21 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
         </div>
       </details>
     </section>
+
+    <!-- 상단 안내 -->
+    <div class="callout callout--gray">
+      <p>해당 공론화의 논점입니다. 제작자인 ‘기계’ 님이 ‘<strong>유료 서비스</strong>’이면서, 일반 유저에겐 ‘<strong>캐릭터 공략 불가</strong>’, ‘<strong>유저 뒷담</strong>’을 했으며, ‘기계’ 님이 초기에 만든 단톡방에서부터 이어진 친목 유저에겐 같은 ‘<strong>공략 불가 캐릭터들’을 ‘정실’로 인정</strong>해 준 것.</p>
+      <ol>
+        <li>공략 불가인데, 정실이 존재한 점</li>
+        <li>유저 뒷담화</li>
+        <li>공식 설정 및 전개를 일부 유저와 사적인 공간에서 먼저 제작되고 공유된 점</li>
+        <li>포타에 연재되는 소설은 세계관 분리라고 했지만, 실제로 연재된 소설은 똑같은 설정의 캐릭터가 ‘유사 사랑’을 하고 있는 점</li>
+      </ol>
+      <p class="small"><strong>※ 크랙 측에서 공론화 계정을 계속해서 계정 정지하고 있습니다.</strong> 만약 깃허브조차 신고가 되어 사라진다면, 하기 오픈채팅으로 모여주세요. 북마크 부탁드립니다.</p>
+      <p class="small">비상시 오픈채팅 링크: <a class="linklike" target="_blank" rel="noopener" href="https://open.kakao.com/o/gaiEFDLi">https://open.kakao.com/o/gaiEFDLi</a></p>
+      <p class="small">※ 해당 문서에서 정정사항이 있으면 <a href="#s5">6. 반론 및 정정 요청</a>을 확인하여 주세요.</p>
+      <p style="margin-top:16px; margin-bottom:0;"><a class="linklike" target="_blank" rel="noopener" href="https://github.com/plain-archive/machine-archive/blob/main/GUIDE.md">📖 깃허브가 처음이신가요? 이용 안내 보기</a></p>
+    </div>
 
     <!-- 답변 현황 : 숫자판과 쟁점별 막대는 스크립트가 5장의 표에서 세어 채웁니다 -->
     <div class="jsonly">
@@ -1423,7 +1466,7 @@ a.card:hover{ text-decoration:none; background:#eae7de; }
     <section class="section">
       <h2 class="section__title" id="questions-1025">10월 25일 입장문에 대한 질의</h2>
       <p>기계 님께서 2026년 10월 25일에 올리신 3차 입장문을 읽었습니다. 입장문에서 밝히신 내용과 그동안의 입장문, 공론화 자료에 정리된 기록 가운데 사실관계를 확인하고 싶은 부분이 있어 아래와 같이 질의드립니다. 각 질문의 번호를 붙여 답해 주시기 바랍니다. 답하기 어려운 질문이 있다면 그 이유를 함께 적어 주시기 바랍니다.</p>
-      <ul class="small"><li>'○문단'은 따로 밝히지 않으면 2026년 10월 25일 3차 입장문의 문단 순서를 가리킵니다.</li><li>'공론화 자료'는 공론화 진행 측이 공개한 타임라인과 원문서를 가리킵니다. 인용 속 '○'는 공론화 자료에서 가린 글자입니다.</li></ul>
+      <ul class="small"><li>'○문단'은 따로 밝히지 않으면 2026년 10월 25일 3차 입장문의 문단 순서를 가리킵니다.</li><li>'공론화 자료'는 이 문서의 타임라인과 원문서를 가리킵니다. 인용 속 '○'는 공론화 자료에서 가린 글자입니다.</li></ul>
       <label class="search jsonly"><span>질의에서 찾기</span><input type="search" id="qsearch" placeholder="예: 스핀오프, 정실, 공동 문서" autocomplete="off"></label>
       <p class="small jsonly" id="qcount" aria-live="polite"></p>
       <div class="qgroup">
@@ -1910,6 +1953,20 @@ var TABS = { resets: [] };   /* 골라 보기·낱말 찾기를 처음으로 되
 
   activate(current() || panels[0]);
 
+  /* 탭 줄이 화면보다 길면 가려진 쪽 끝에 표시를 보인다 */
+  (function(){
+    var inner = document.querySelector('.tabs__inner'), bar = inner && inner.parentNode;
+    if(!inner) return;
+    function edges(){
+      bar.classList.toggle('is-less', inner.scrollLeft > 4);
+      bar.classList.toggle('is-more', inner.scrollLeft + inner.clientWidth < inner.scrollWidth - 4);
+    }
+    inner.addEventListener('scroll', edges, {passive:true});
+    window.addEventListener('resize', edges);
+    window.addEventListener('load', edges);
+    edges();
+  })();
+
   /* 주소 끝 이름표로 처음 들어왔을 때 : 미끄러지지 않고 바로 그 자리에 선다.
      (미끄러지는 도중에 이미지가 불려 오면 도착 자리가 어긋나서, 다 불린 뒤 한 번 더 맞춘다) */
   if(location.hash && idOf(location.hash) !== 'top'){
@@ -1930,7 +1987,7 @@ var TABS = { resets: [] };   /* 골라 보기·낱말 찾기를 처음으로 되
   function textOf(node){
     var c = node.cloneNode(true);
     all('br', c).forEach(function(br){ br.parentNode.replaceChild(document.createTextNode(' '), br); });
-    all('.toggle__count, .card__meta, .blk__sub', c).forEach(function(x){ x.parentNode.removeChild(x); });
+    all('.toggle__count, .card__meta, .card__date, .blk__sub', c).forEach(function(x){ x.parentNode.removeChild(x); });
     return c.textContent.replace(/\s+/g, ' ').trim();
   }
   var KINDS = ['yes', 'part', 'none'], NAMES = { yes:'답변', part:'부분 답변', none:'언급 없음' };
@@ -2135,6 +2192,7 @@ var TABS = { resets: [] };   /* 골라 보기·낱말 찾기를 처음으로 되
       box.appendChild(t);
       var cap = el('figcaption');
       cap.appendChild(el('b', '', name + '번'));
+      if(g === 'closed') cap.appendChild(el('span', 'file__note', '2차 배포 금지'));
       var a = el('a', '', where(img)); a.href = '#' + img.id;
       cap.appendChild(a);
       fig.appendChild(box); fig.appendChild(cap);
@@ -2199,12 +2257,19 @@ var TABS = { resets: [] };   /* 골라 보기·낱말 찾기를 처음으로 되
   view.innerHTML =
     '<div class="imgview__scroll"><img class="imgview__img" alt="" draggable="false"></div>' +
     '<button type="button" class="imgview__close" aria-label="닫기">✕</button>' +
+    '<p class="imgview__note" hidden>※ 본 이미지는 2차 배포를 금지합니다.</p>' +
     '<p class="imgview__hint">' + (coarse ? '두 손가락으로 확대·축소할 수 있습니다' : 'Ctrl + 마우스 휠로 확대·축소할 수 있습니다') + '</p>';
   document.body.appendChild(view);
 
   var scroller = view.querySelector('.imgview__scroll');
   var big = view.querySelector('.imgview__img');
   var closeBtn = view.querySelector('.imgview__close');
+  var note = view.querySelector('.imgview__note');
+  /* 2차 배포를 금지한 이미지인지 : '비공개 톡방 타임라인' 장(#s2)의 이미지와, 증거 목록에서 그 묶음에 든 칸 */
+  function noShare(img){
+    var f = img.closest('.file');
+    return !!img.closest('#s2') || !!(f && f.getAttribute('data-g') === 'closed');
+  }
   var opener = null, inlineW = 0, scale = OPEN, pushed = false, pinch = null, gbase = OPEN;
 
   /* 본문 이미지를 키보드로도 열 수 있게 */
@@ -2241,6 +2306,7 @@ var TABS = { resets: [] };   /* 골라 보기·낱말 찾기를 처음으로 되
     opener = img;
     big.alt = img.alt || '';
     big.src = img.currentSrc || img.src;
+    note.hidden = !noShare(img);
     view.classList.add('is-open');
     view.setAttribute('aria-hidden', 'false');
     document.documentElement.style.overflow = 'hidden';
